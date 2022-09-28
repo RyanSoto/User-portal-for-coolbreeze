@@ -73,8 +73,7 @@ function createUser($conn, $name, $email, $username, $pwd) {
     }
 
     $hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
-
-    echo "It works";
+    
     mysqli_stmt_bind_param($stmt, "ssss" , $name, $email, $username, $hashedPwd);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
@@ -105,13 +104,13 @@ function loginUser($conn, $username, $pwd) {
     $checkPwd= password_verify($pwd, $pwdHashed); 
 
     if ($checkPwd === false) {
-        header("location: ../login.php?error=wronglongin");
+        header("location: ../login.php?error=wronglogin");
         exit();
     }
     else if ($checkPwd === true) {
         session_start();
         $_SESSION["userid"] = $uidExists["usersId"];
-        $_SESSION["useruid"] = $uidExists["usersUId"];
+        $_SESSION["useruid"] = $uidExists["usersUid"];
         header("location: ../index.php");
         exit();
     }
