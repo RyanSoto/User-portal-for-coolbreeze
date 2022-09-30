@@ -9,8 +9,8 @@
 
                         }
                 ?>
-                <h1>This Is An Introduction</h1>
-                <p>Here is an important paragraph that explains the purpose of the website</p>
+                <h1>Welcome to the resident portal</h1>
+                <p>Make a payment or request maintenance/repair</p>
             </section>
             <section class="index-categories">
                 <h2>Some Basic Categories</h2>

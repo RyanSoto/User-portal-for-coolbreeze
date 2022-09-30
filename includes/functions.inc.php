@@ -1,6 +1,6 @@
 <?php
 
-function emptyInputSignup($name, $email,$username, $pwd, $pwdReapeat) {
+function emptyInputSignup($name, $email, $username, $pwd, $pwdReapeat) {
     $result;
     if (empty($name) || empty($email) || empty($username) || empty($pwd) || empty($pwdReapeat)) {
         $result = true;
@@ -22,7 +22,7 @@ function invalidUid($username) {
 
 function invalidEmail($email) {
     $result;
-    if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $result = true;
     }   else {
         $result = false;
@@ -92,7 +92,11 @@ function emptyInputLogin($username, $pwd) {
     return $result;
 }
 
-function loginUser($conn, $username, $pwd) {
+function isAdmin() {
+
+}
+
+function loginUser($conn, $username, $pwd, ) {
     $uidExists = uidExists($conn, $username, $username);
 
     if ($uidExists === false) {
@@ -102,6 +106,7 @@ function loginUser($conn, $username, $pwd) {
 
     $pwdHashed = $uidExists["usersPwd"];
     $checkPwd= password_verify($pwd, $pwdHashed); 
+    $usertype = $uidExists["usersType"];
 
     if ($checkPwd === false) {
         header("location: ../login.php?error=wronglogin");
@@ -111,7 +116,16 @@ function loginUser($conn, $username, $pwd) {
         session_start();
         $_SESSION["userid"] = $uidExists["usersId"];
         $_SESSION["useruid"] = $uidExists["usersUid"];
-        header("location: ../index.php");
-        exit();
+
+        if ($usertype === "admin") {
+            header("location: ../admin.php");
+            exit(); 
+        }
+        else {
+            
+            header("location: ../index.php");
+            exit(); 
+        }
+        
     }
 }

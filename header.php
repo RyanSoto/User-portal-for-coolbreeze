@@ -13,12 +13,12 @@
 <body>
         <nav>
             <div class="wrapper">
-                <a href="index.php"><img src="img/logo-white.png" alt="Logo"></a>
+                <a href="index.php"><img src="img/LogoMakr-3m6JPf.png" alt="Logo"></a>
                 <ul>
                     <li><a href="index.php">Home</a></li>
                     <?php
                         if (isset($_SESSION["useruid"])) {
-                            echo "<li><a href='profile.php'>Profile page</a></li>";
+                            echo "<li><a href='account.php'>Account</a></li>";
                             echo "<li><a href='includes/logout.inc.php'>Log out</a></li>";
                         }
                         else {
