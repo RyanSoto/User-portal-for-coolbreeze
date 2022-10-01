@@ -20,3 +20,6 @@ Resident Database
     Balance
 
 
+Automated email/txt about pending rent and/or late rent
+
+Vacancy
