@@ -9,11 +9,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PHP Login Project</title>
+    <link rel="stylesheet" href="CSS/main.css">
 </head>
 <body>
-        <nav>
-            <div class="wrapper">
-                <a href="index.php"><img src="img/LogoMakr-3m6JPf.png" alt="Logo"></a>
+        <nav class="header-nav">
+            <section class="header-sec">
+                <a class ="header-icon" href="index.php"><img src="img/LogoMakr-3m6JPf.png" alt="Logo"></a>
                 <ul>
                     <li><a href="index.php">Home</a></li>
                     <?php
@@ -33,7 +34,8 @@
                         }
                         ?>
                 </ul>
-            </div>
+            </section>
+
         </nav>
 
     <div class="wrapper">

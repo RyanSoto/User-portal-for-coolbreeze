@@ -2,7 +2,7 @@
     include_once 'header.php';
 ?>
 
-            <section class="index-into">
+            <section class="container">
                 <?php
                         if (isset($_SESSION["useruid"])) {
                             echo "<p>Howdy " . $_SESSION["useruid"] ."</p>";
@@ -11,23 +11,24 @@
                 ?>
                 <h1>Welcome to the resident portal</h1>
                 <p>Make a payment or request maintenance/repair</p>
-            </section>
-            <section class="index-categories">
-                <h2>Some Basic Categories</h2>
-                <div class="index-categories-list">
-                    <div>
-                        <h3>Fun STuff</h3>
+            
+                <section class="index-categories">
+                    <h2>Some Basic Categories</h2>
+                    <div class="index-categories-list">
+                        <div>
+                            <h3>Fun Stuff</h3>
+                        </div>
+                        <div>
+                            <h3>Serious Stuff</h3>
+                        </div>
+                        <div>
+                            <h3>Serious Stuff</h3>
+                        </div>
+                        <div>
+                            <h3>Boring Stuff</h3>
+                        </div>
                     </div>
-                    <div>
-                        <h3>Serious Stuff</h3>
-                    </div>
-                    <div>
-                        <h3>Serious Stuff</h3>
-                    </div>
-                    <div>
-                        <h3>Boring Stuff</h3>
-                    </div>
-                </div>
+                </section>
             </section>
         
 <?php

@@ -18,7 +18,7 @@
 
 ?>
 
-            <section class="index-into">
+            <section class="container">
                 <?php
                         if (isset($_SESSION["useruid"])) {
                             echo "<p>Howdy admin user " . $_SESSION["useruid"] ."</p>";
@@ -27,7 +27,20 @@
                 ?>
                 <h1>Welcome to the admin page</h1>
                 <p>Time to take care of business!</p>
-
+                <section class="admin-categories">
+                    <h2>Some Basic Categories</h2>
+                    <div class="admin-categories-list">
+                        <div>
+                            <h3>Update Properties</h3>
+                        </div>
+                        <div>
+                            <h3>Update Residents</h3>
+                        </div>
+                        <div>
+                            <h3>Manage Maintenance/Repair Requests</h3>
+                        </div>
+                    </div>
+                </section>
                 <?php
                     $sql = "SELECT * FROM property;";
                     $result = mysqli_query($conn, $sql);
