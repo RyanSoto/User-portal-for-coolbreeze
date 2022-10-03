@@ -18,8 +18,14 @@
                     <li><a href="index.php">Home</a></li>
                     <?php
                         if (isset($_SESSION["useruid"])) {
-                            echo "<li><a href='account.php'>Account</a></li>";
+
+                            if ($_SESSION["usertype"] == "admin") {
+                            echo "<li><a href='admin.php'>Account</a></li>";
                             echo "<li><a href='includes/logout.inc.php'>Log out</a></li>";
+                            } else {
+                                echo "<li><a href='user.php'>Account</a></li>";
+                                echo "<li><a href='includes/logout.inc.php'>Log out</a></li>";
+                            }
                         }
                         else {
                             echo "<li><a href='login.php'>Login</a></li>";
