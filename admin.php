@@ -19,22 +19,21 @@
 ?>
 
             <section class="container">
+                <h1>Welcome to the admin page</h1>
                 <?php
                         if (isset($_SESSION["useruid"])) {
                             echo "<p>Howdy admin user " . $_SESSION["useruid"] ."</p>";
-
                         }
                 ?>
-                <h1>Welcome to the admin page</h1>
                 <p>Time to take care of business!</p>
                 <section class="admin-categories">
                     <h2>Some Basic Categories</h2>
                     <div class="admin-categories-list">
                         <div>
-                            <h3>Update Properties</h3>
+                            <h3>Manage Properties</h3>
                         </div>
                         <div>
-                            <h3>Update Residents</h3>
+                            <h3>Manage Residents</h3>
                         </div>
                         <div>
                             <h3>Manage Maintenance/Repair Requests</h3>

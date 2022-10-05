@@ -2,13 +2,25 @@
 
 Building database
 
+User
+    usersId
+    usersName
+    usersEmail
+    usersUid (user name)
+    usersType
+    usersPwd
+    usersProp
+
 Property Database
-    Id
+    propId
     Street Address
+    apt
     City
+    state
     Zip code
     Rent amount
     Occupancy
+    resident
     Lease terms
     Images
 
@@ -23,14 +35,19 @@ Resident Database
 
 Maintenance Database
     Id
+    status
     Associated Property
     resident
     urgency
-    type
+    type (Plumbing, Electrical, HVAC, Gas, Appliance, Cosmetic)
     description
 
 Application fields stored in database to be pulled for Lease form and/or Resident database 
 
 Automated email/txt about pending rent and/or late rent
 
-Vacancy
+Vacancy indicator
+
+Admin page - update properties, update residents, manage maintenace and repair
+
+User page - View property, pay bill, request main_rep

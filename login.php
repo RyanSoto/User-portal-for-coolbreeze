@@ -19,6 +19,12 @@
             else if ($_GET["error"] == "wronglogin") {
                 echo "<p>Incorrect login information.</p>";
             }
+            else if ($_GET["error"] == "notuser") {
+                echo "<p>You can't access user accounts as an admin.</p>";
+            }
+            else if ($_GET["error"] == "notadmin") {
+                echo "<p>You are not an admin.</p>";
+            }
         }
     ?>  
     </section>
