@@ -20,16 +20,22 @@
             <section class="container">
                 <h1>Welcome to the user page</h1>
                 <?php
+                    include_once 'includes/dbh.inc.php';
+                    
+                    
                         if (isset($_SESSION["useruid"])) {
-                            echo "<p>Howdy user " . $_SESSION["useruid"] ." " . $_SESSION["userresnum"] ."</p>";
+                            echo "<p>Howdy user " . $_SESSION["useruid"] ." </p>";
 
                         }
                 ?>
                 <h2>Here you can check your balance, make a payment, or request for maintenance/repair.</h2>
-                <div class="bal-check-form">
-                    <form action="includes/bal.inc.php" method="get">
-                        <button type="submit" name="bal">Check Balance</button>
-                    </form>
+                <?php
+                    require_once 'includes/functions.inc.php';
+                    showBal($conn);
+
+                ?>
+            
+
 
             </section>
         

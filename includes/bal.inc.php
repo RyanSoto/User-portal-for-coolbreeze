@@ -4,12 +4,8 @@
 
     $userResNum = $_SESSION["userresnum"];
 
-    // $sql = "SELECT * FROM residents WHERE $userResNum;";
-    // $result = mysqli_query($conn, $sql);
-    // $row = mysqli_fetch_assoc($result);
 
     $sql = "SELECT * FROM residents WHERE id=?;";
-    // $stmt = $mysqli->prepare("SELECT * FROM residents WHERE id=?");
     $stmt= mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("location: ../user.php?error=stmtfailed");
@@ -19,10 +15,6 @@
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
     $row = $result->fetch_assoc();
-
-    // $stmt->execute();
-    // $result = $stmt->get_result();
-    // $row = $result->fetch_assoc();
 
     echo"<table border= '1'>";
                     echo"<tr><td>Balance</td>";
