@@ -4,7 +4,7 @@
 
 :root {
     font-family: 'Gotham Rounded';
-    font-size: 20px;
+    font-size: 14px;
     color: var(--color-text-light);
 }
 
@@ -13,7 +13,7 @@
 }
 
 body {
-    background: linear-gradient(to right, var(--color-background-light), var(--color-background-dark))
+     background: #007793; /*linear-gradient(to right, var(--color-background-light), var(--color-background-dark)) */
 }
 
 .container {

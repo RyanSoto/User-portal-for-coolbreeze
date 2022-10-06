@@ -21,17 +21,19 @@
                 <h1>Welcome to the user page</h1>
                 <?php
                     include_once 'includes/dbh.inc.php';
-                    
+                    require_once 'includes/functions.inc.php';
                     
                         if (isset($_SESSION["useruid"])) {
                             echo "<p>Howdy user " . $_SESSION["useruid"] ." </p>";
 
                         }
                 ?>
-                <h2>Here you can check your balance, make a payment, or request for maintenance/repair.</h2>
+                <h2>Make a payment or <a href='maintreq.php'>request for maintenance/repair.</a></h2>
                 <?php
-                    require_once 'includes/functions.inc.php';
-                    showBal($conn);
+                    userShowProp($conn);
+                    
+
+                    userShowBal($conn);
 
                 ?>
             
