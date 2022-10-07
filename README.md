@@ -48,6 +48,6 @@ Automated email/txt about pending rent and/or late rent
 
 Vacancy indicator
 
-Admin page - update properties, update residents, manage maintenace and repair
+Admin page - update properties, update residents, manage maintenace and repair, Create Lease or Deposit forms which are emailed to resident.
 
 User page - View property, pay bill, request main_rep
