@@ -166,8 +166,9 @@ function userShowBal($conn) {
     $row = $result->fetch_assoc();
 
     echo"<table border= '1'>";
-    echo"<tr><td>Balance</td>";
-    echo"<tr><td>{$row["bal"]}</td>";
+    echo"<tr><td>Balance</td></tr>";
+    echo"<tr><td>{$row["bal"]}</td></tr>";
+    echo"</table>";
 }
 
 function userShowProp($conn) {
@@ -190,7 +191,7 @@ function userShowProp($conn) {
             echo"<tr><td>{$row["streetAd"]}</td><td>{$row["apt"]}</td><td>{$row["city"]}</td>
             <td>{$row["state"]}</td><td>{$row["zipCode"]}</td><td>$ {$row["rentTot"]}</td><td>{$row["leaseTerm"]}</td></tr>";
         }
-    }
+    }echo"</table>";
 }
 
 function adminShowProp($conn) {
@@ -202,8 +203,8 @@ function adminShowProp($conn) {
     if ($resultCheck > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
             echo"<tr><td>{$row["propId"]}</td><td>{$row["streetAd"]}</td><td>{$row["apt"]}</td><td>{$row["city"]}</td>
-            <td>{$row["state"]}</td><td>{$row["zipCode"]}</td><td>{$row["rentTot"]}</td><td>{$row["occupied"]}</td><td>{$row["leaseTerm"]}</td></tr>";
+            <td>{$row["state"]}</td><td>{$row["zipCode"]}</td><td>$ {$row["rentTot"]}</td><td>{$row["occupied"]}</td><td>{$row["leaseTerm"]}</td></tr>";
             // echo "{$row["propId"]} {$row["streetAd"]} {$row["apt"]} {$row["city"]} {$row["state"]} {$row["zipCode"]} {$row["rentTot"]} {$row["occupied"]} {$row["leaseTerm"]} {$row["img_path"]} <br>";
         }
-    }
+    }echo"</table>";
 }

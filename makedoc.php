@@ -20,6 +20,7 @@
 ?>
 
     <section class="container">
+    <div class="inner-container">
                     <h1>Make a Receipt and Holding Deposit Agreement</h1>
                     <p> Name of the applicant </p>
                     <form action="includes/depositform.inc.php" method="post">
@@ -33,4 +34,6 @@
                     <button type="submit" name="submit">Review Doc</button>
                     <button type="submit" name="download">Download Doc</button>
                 </form>
+</div>
+</section>
 

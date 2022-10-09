@@ -3,6 +3,7 @@
 ?>
 
     <section class="container">
+        <div class="inner-container">
         <h2>Please select a type of repair, urgency, and a short description.</h2>
         <form action="includes/maintreq.inc.php" method="post">
         <label for="typeOf">What type of repair</label>
@@ -48,7 +49,8 @@
         //         echo "<p>You have signed up!</p>";
         //     }
         // }
-    ?>  
+    ?>
+    </div>  
     </section>
 
         

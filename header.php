@@ -14,25 +14,27 @@
 <body>
         <nav class="header-nav">
             <section class="header-sec">
-                <a class ="header-icon" href="index.php"><img src="img/LogoMakr-3m6JPf.png" alt="Logo"></a>
-                <ul>
-                    <li><a href="index.php">Home</a></li>
-                    <?php
-                        if (isset($_SESSION["useruid"])) {
+                <div class="icon-img"> 
+                    <a class ="header-icon" href="index.php"><img src="img/LogoMakr-1dcGhA.png" alt="Logo"></a>
+                </div>
+                    <ul>
+                        <li><a href="index.php">Home</a></li>
+                        <?php
+                            if (isset($_SESSION["useruid"])) {
 
-                            if ($_SESSION["usertype"] == "admin") {
-                            echo "<li><a href='admin.php'>Account</a></li>";
-                            echo "<li><a href='includes/logout.inc.php'>Log out</a></li>";
-                            } else {
-                                echo "<li><a href='user.php'>Account</a></li>";
+                                if ($_SESSION["usertype"] == "admin") {
+                                echo "<li><a href='admin.php'>Account</a></li>";
                                 echo "<li><a href='includes/logout.inc.php'>Log out</a></li>";
+                                } else {
+                                    echo "<li><a href='user.php'>Account</a></li>";
+                                    echo "<li><a href='includes/logout.inc.php'>Log out</a></li>";
+                                }
                             }
-                        }
-                        else {
-                            echo "<li><a href='login.php'>Login</a></li>";
-                            echo "<li><a href='signup.php'>Sign Up</a></li>";
-                        }
-                        ?>
+                            else {
+                                echo "<li><a href='login.php'>Login</a></li>";
+                                echo "<li><a href='signup.php'>Sign Up</a></li>";
+                            }
+                            ?>
                 </ul>
             </section>
 

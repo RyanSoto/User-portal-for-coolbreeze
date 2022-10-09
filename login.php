@@ -3,12 +3,16 @@
 ?>
 
     <section class="container">
+        <div class="inner-container">
         <h2>Log in</h2>
-        <div class="signup-form-form">
             <form action="includes/login.inc.php" method="post">
+                <p>User Name</p>
                 <input type="text" name="uid" placeholder="Username/Email...">
+                <p>Password</p>
                 <input type="password" name="pwd" placeholder="Password...">
+                <br><br>
                 <button type="submit" name="submit">Log in</button>
+
             </form>
         </div>
         <?php

@@ -1,34 +1,67 @@
 @import 'shared/header.css';
 @import 'shared/variables.css';
+@import 'shared/footer.css';
+
+/* header font */
+@font-face {
+    src: url(fonts/MarcellusSC-Regular.ttf);
+    font-family: marc;
+}
+
+/* container font */
+@font-face {
+    src: url(fonts/Montserrat-VariableFont_wght.ttf);
+    font-family: mont;
+}
 
 
 :root {
-    font-family: 'Gotham Rounded';
-    font-size: 14px;
-    color: var(--color-text-light);
+    font-family: mont;
+    font-size: 15px;
+    color: white;        /* var(--color-text-light); */
+    
 }
 
 *, *::before, *::after {
     box-sizing: border-box;
 }
 
+
+
 body {
-     background: #007793; /*linear-gradient(to right, var(--color-background-light), var(--color-background-dark)) */
+    background-attachment: fixed;
+    background-image: url("http://coolbreezetexas.com/wp-content/uploads/2022/09/pexels-jonathan-aman-749319-scaled.jpg");
+    min-height: 100vh; margin:0; 
+    /* background: rgb(66, 66, 66);  linear-gradient(to right, var(--color-background-light), var(--color-background-dark)) */
+    
+}
+
+.wrapper {
+    flex:1; 
+    /* background: rgb(66, 66, 66);  linear-gradient(to right, var(--color-background-light), var(--color-background-dark)) */
 }
 
 .container {
-    max-width: 1140px;    
-    margin: auto;
-    margin-top: 180px;
+    background: #007793;
+    max-width: 1140px;
+    min-height: 702px; 
+    height: max-content;   
+    margin-top: 50px;
     margin-bottom: 3rem;
-    /* display: flex; */
     margin-right: auto;
     margin-left: auto;
-    position: relative;
+    font-family: mont;
+    border: solid;
+    border-color: #c59d55;
+
 }
 
 .inner-container {
-    margin: 0 2rem;
+
+    width: 1100px;
+    margin: auto;
+    padding-bottom: 20px;
+
 }
 
 .page-header {
@@ -38,4 +71,54 @@ body {
 
 .error-message {
     color: hsl(var(--color-danger-hue) ,100% , 50%);
+}
+
+h1 {
+    font-family: marc;
+    color:#c59d55;
+}
+
+h2 {
+    font-family: marc;
+    color:#c59d55;
+}
+h3 {
+    font-family: marc;
+    color:#c59d55;
+}
+h4 {
+    font-family: marc;
+    color:#c59d55;
+}
+
+a{
+    color:#c59d55;
+}
+
+a:hover {
+    color: #757575;
+
+}
+
+input {
+    font-family: inherit;
+    padding: 12px 15px 12px 15px;
+}
+
+button {
+    background-color: #092415;
+    border-radius: 30px;
+    display: inline-block;
+    font-family: inherit;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 14px 20px;
+    border: 0;
+    cursor: pointer;
+    text-align: center;
+    letter-spacing: .1em;
+    line-height: 1;
 }

@@ -3,15 +3,23 @@
 ?>
 
     <section class="container">
+        <div class="inner-container">
         <h2>Sign Up</h2>
         <form action="includes/signup.inc.php" method="post">
+            <p>Full Name</p>
             <input type="text" name="name" placeholder="Full name...">
+            <p>E-mail</p>
             <input type="text" name="email" placeholder="Email...">
+            <p>User Name</p>
             <input type="text" name="uid" placeholder="Username...">
+            <p>Password</p>
             <input type="password" name="pwd" placeholder="Password...">
+            <p>Repeat Password</p>
             <input type="password" name="pwdrepeat" placeholder="Repeat password...">
+            <br> <br>
             <button type="submit" name="submit">Sign Up</button>
         </form>
+        </div>
         <?php
         if (isset($_GET["error"])) {
             if ($_GET["error"] == "emptyinput") {

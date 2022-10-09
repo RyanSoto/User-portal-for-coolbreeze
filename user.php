@@ -17,7 +17,8 @@
 
 ?>
 
-            <section class="container">
+        <section class="container">
+            <div class="inner-container">
                 <h1>Welcome to the user page</h1>
                 <?php
                     include_once 'includes/dbh.inc.php';
@@ -36,10 +37,10 @@
                     userShowBal($conn);
 
                 ?>
-            
+        
 
-
-            </section>
+            </div>
+        </section>
         
 <?php
     include_once 'footer.php';
