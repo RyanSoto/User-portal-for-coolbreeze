@@ -1,14 +1,26 @@
 <?php 
+    session_start();
+    if (!isset($_SESSION["useruid"]))
+    {
+        header("location:login.php?error=notloggedin");
+        exit();
+    } else 
 
-require('fpdf/fpdf.php');
+    if  ($_SESSION["usertype"] == "user") {
+        header("location: login.php?error=notadmin");
+        exit();
+    }
+
+require('../fpdf/fpdf.php');
 class PDF extends FPDF
+
 
 {
 // Page header
 function Header()
 {
     // Logo
-    $this->Image('img/LogoMakr-3m6JPf.png',15,8,0,0);
+    $this->Image('../img/LogoMakr-3m6JPf.png',15,8,0,0);
     // Arial bold
     $this->SetFont('helvetica','B',10);
     // Move to the right
@@ -34,14 +46,28 @@ function Footer()
 }
 }
 
+// Document variables 
+if ((isset($_POST["submit"])) || (isset($_POST["download"]))) {
 
-$owner = 'Robert Soto';
-$applicant = '';
-$address = '';
-$depoAmount = '400';
-$todayDate = date("F j, Y");
-$endDate = '' ;
 
+    $owner = 'Robert Soto';
+    $applicant = $_POST["applicant"];
+    $address = $_POST["address"];
+    $depoAmount = $_POST["depoAmount"];
+    $endDate = $_POST["endDate"];
+    $todayDate = date('Y-m-d');
+
+} else {
+    $applicant = '';
+    $address = '';
+    $depoAmount = '400';
+    $todayDate = date('Y-m-d');
+    $endDate = '' ;
+};
+
+$fileName = $applicant . "DepositReceipt.pdf";
+
+//FPDF Start
 $pdf = new PDF();
 $pdf->AliasNbPages();
 $pdf->AddPage();
@@ -83,16 +109,14 @@ $pdf->Cell(15, 6, ' until:', 0, 0);
 $pdf->Cell(35, 6, $endDate, 'B', 1, 'C');
 $pdf->Ln(5);
 
-$pdf->MultiCell(0, 6, "If the Applicant's application is rejected or the property becomes unavailable within 14
-days, the holding deposit sum shall be returned in its entirety to the Applicant.
+$pdf->MultiCell(0, 6, "If the Applicant's application is rejected or the property becomes unavailable within 14 days,
+the holding deposit sum shall be returned in its entirety to the Applicant.
 ", 0, 1);
 $pdf->Ln(5);
 
-//
-
 $pdf->MultiCell(0, 6, 'If the application is accepted, the holding deposit sum will be held until the end of the lease agreement. If any damages are made in the duration of the stay a portion or all of the deposit will
 be used for repairs.
-', 0, 0);
+', 0, 1);
 $pdf->Ln(5);
 
 $pdf->Cell(0, 6, 'After expiration of the lease agreement, any balance not used on damages caused by the Applicant', 0, 1);
@@ -100,16 +124,16 @@ $pdf->Cell(0, 6, 'from the holding deposit shall be returned within 30 days', 0,
 $pdf->Ln(40);
 
 $pdf->Cell(15);
-$pdf->Cell(60, 6, '', 'B', 0);
+$pdf->Cell(60, 6, $owner, 'B', 0, 'C');
 
-$pdf->Cell(40);
-$pdf->Cell(30, 6, date("d/m/y"), 'B', 1, 'C');
+$pdf->Cell(50);
+$pdf->Cell(30, 6, date("m/d/y"), 'B', 1, 'C');
 
 
 $pdf->Cell(15);
 $pdf->Cell(60, 6, 'Owner', 0, 0, 'C');
 
-$pdf->Cell(40);
+$pdf->Cell(50);
 $pdf->Cell(30, 6, 'Date', 0, 1, 'C');
 
 
@@ -117,12 +141,17 @@ $pdf->Ln(30);
 
 
 $pdf->Cell(15);
-$pdf->Cell(60, 6, '', 'B', 1);
+$pdf->Cell(60, 6, $applicant, 'B', 1, 'C');
 
 $pdf->Cell(15);
 $pdf->Cell(60, 6, 'Applicant', 0, 0, 'C');
 $pdf->Cell(40);
 
-$pdf->Output();
+if (isset($_POST["submit"])) {
 
+    $pdf->Output('I', $fileName);
+
+} else if (isset($_POST["download"])) {
+    $pdf->Output('D', $fileName);
+}
 ?>

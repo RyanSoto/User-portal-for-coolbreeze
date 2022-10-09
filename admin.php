@@ -39,6 +39,9 @@
                         <div>
                             <h3>Manage Maintenance/Repair Requests</h3>
                         </div>
+                        <div>
+                            <h3><a href='makedoc.php'>Create a document</a></h3>
+                        </div>
                     </div>
                 </section>
                 <?php

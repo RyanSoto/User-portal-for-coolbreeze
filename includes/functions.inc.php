@@ -108,7 +108,7 @@ function createReq($conn, $assocProp, $resident, $urgency, $typeOf, $descrip) {
 
 }
 
-function loginUser($conn, $username, $pwd, ) {
+function loginUser($conn, $username, $pwd) {
     $uidExists = uidExists($conn, $username, $username);
 
     if ($uidExists === false) {

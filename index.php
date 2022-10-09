@@ -13,8 +13,8 @@
                 <p>Make a payment or request maintenance/repair</p>
             
                 <section class="index-categories">
-                    <h2>Some Basic Categories</h2>
-                    <div class="index-categories-list">
+                    <h2>Login Here</h2>
+                    <!-- <div class="index-categories-list">
                         <div>
                             <h3>Fun Stuff</h3>
                         </div>
@@ -27,7 +27,7 @@
                         <div>
                             <h3>Boring Stuff</h3>
                         </div>
-                    </div>
+                    </div> -->
                 </section>
             </section>
         
