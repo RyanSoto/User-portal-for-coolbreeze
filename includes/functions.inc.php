@@ -194,7 +194,7 @@ function userShowProp($conn) {
     }echo"</table>";
 }
 
-function adminShowProp($conn) {
+function adminShowAllProp($conn) {
     $sql = "SELECT * FROM property;";
     $result = mysqli_query($conn, $sql);
     $resultCheck = mysqli_num_rows($result);
@@ -202,10 +202,46 @@ function adminShowProp($conn) {
     echo"<tr><td></td><td>Id</td><td>Street Address</td><td>Apt/Unit #</td><td>City</td><td>State</td><td>Zip Code</td><td>Rent</td><td>Occupied?</td><td>Lease</td></tr>";
     if ($resultCheck > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
-            echo"<tr><td><form action='includes/updateprop.inc.php' method='post'><button type='submit' name='update'>Update</button></form></td>
+            echo"<tr><td><a href='updateprop.php?id={$row["propId"]}' method='post'><button type='submit' name='update'>Update</button></a></td>
             <td>{$row["propId"]}</td><td>{$row["streetAd"]}</td><td>{$row["apt"]}</td><td>{$row["city"]}</td>
             <td>{$row["state"]}</td><td>{$row["zipCode"]}</td><td>$ {$row["rentTot"]}</td><td>{$row["occupied"]}</td>
             <td>{$row["leaseTerm"]}</td></tr>";
         }
     }echo"</table>";
+}
+
+function adminUpdateProp($conn) {
+    if (isset($_GET['id'])) {
+        require_once 'includes/dbh.inc.php';
+        include_once 'includes/functions.inc.php';
+
+        $id = mysqli_real_escape_string($conn, $_GET['id']);
+
+        $sql = "SELECT * FROM property WHERE propId='$id';";
+        $result = mysqli_query($conn, $sql) or die("Bad Query: $sql");
+        $row =mysqli_fetch_array($result);
+        echo" <form action='includes/updateprop.inc.php' method='post'>";
+        echo" <table border= '1'>";
+        echo"<tr><td>Id</td><td>Street Address</td><td>Apt/Unit #</td>
+        <td>City</td><td>State</td><td>Zip Code</td><td>Rent</td><td>Occupied?</td><td>Lease</td></tr>";
+        echo"<tr><td>{$row["propId"]}</td><td>{$row["streetAd"]}</td><td>{$row["apt"]}</td><td>{$row["city"]}</td>
+        <td>{$row["state"]}</td><td>{$row["zipCode"]}</td>
+        <td>$ <input style='width:75px' type='text' name='rent' value='{$row["rentTot"]}'></td>
+        <td><select style='width:100px' name='rent'> 
+                <option value='{$row["occupied"]}'>{$row["occupied"]}</option>
+                <option value='No'>No</option>
+                <option value='Reserved'>Reserved</option>
+                <option value='Yes'>Yes</option>
+            </select></td>
+        <td><select style='width:100px' name='rent'> 
+                <option value='{$row["leaseTerm"]}'>{$row["leaseTerm"]}</option>
+                <option value='NA'>NA</option>
+                <option value='3 month'>3 month</option>
+                <option value='6 month'>6 month</option>
+                <option value='12 month'>12 month</option>
+            </select></td>
+            </table><button type='submit' name='submit'>Update</button>";
+        echo" </form>";
+    }
+    
 }

@@ -37,7 +37,7 @@
                         </div>
                     </section>
                     <?php
-                        adminShowProp($conn)
+                        adminShowAllProp($conn)
                     ?>
                 </div>
             </section>

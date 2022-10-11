@@ -12,7 +12,6 @@
                 <input type="password" name="pwd" placeholder="Password...">
                 <br><br>
                 <button type="submit" name="submit">Log in</button>
-
             </form>
         </div>
         <?php
