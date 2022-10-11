@@ -25,7 +25,7 @@
                     <div class="inner-container">
                         <h1>Update Property</h1>
                         <?php
-                        adminUpdateProp($conn)
+                        adminShowProp($conn)
                         ?>
                     </div>
     </section>

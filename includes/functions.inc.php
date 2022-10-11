@@ -210,10 +210,10 @@ function adminShowAllProp($conn) {
     }echo"</table>";
 }
 
-function adminUpdateProp($conn) {
+function adminShowProp($conn) {
     if (isset($_GET['id'])) {
-        require_once 'includes/dbh.inc.php';
-        include_once 'includes/functions.inc.php';
+        // require_once 'includes/dbh.inc.php';
+        // include_once 'includes/functions.inc.php';
 
         $id = mysqli_real_escape_string($conn, $_GET['id']);
 
@@ -227,21 +227,37 @@ function adminUpdateProp($conn) {
         echo"<tr><td>{$row["propId"]}</td><td>{$row["streetAd"]}</td><td>{$row["apt"]}</td><td>{$row["city"]}</td>
         <td>{$row["state"]}</td><td>{$row["zipCode"]}</td>
         <td>$ <input style='width:75px' type='text' name='rent' value='{$row["rentTot"]}'></td>
-        <td><select style='width:100px' name='rent'> 
+        <td><select style='width:100px' name='occupied'> 
                 <option value='{$row["occupied"]}'>{$row["occupied"]}</option>
                 <option value='No'>No</option>
                 <option value='Reserved'>Reserved</option>
                 <option value='Yes'>Yes</option>
             </select></td>
-        <td><select style='width:100px' name='rent'> 
+        <td><select style='width:100px' name='leaseTerm'> 
                 <option value='{$row["leaseTerm"]}'>{$row["leaseTerm"]}</option>
                 <option value='NA'>NA</option>
                 <option value='3 month'>3 month</option>
                 <option value='6 month'>6 month</option>
                 <option value='12 month'>12 month</option>
             </select></td>
+            <input type='hidden' name='id' value='$id'>
             </table><button type='submit' name='submit'>Update</button>";
         echo" </form>";
     }
-    
 }
+
+function updatePropDB($conn, $id, $rent, $occupied, $lease) {
+        $sql = "UPDATE property SET rentTot = ?, occupied = ?, leaseTerm = ? WHERE propid = ?;";
+        $stmt= mysqli_stmt_init($conn);
+        if (!mysqli_stmt_prepare($stmt, $sql)) {
+            header("location: ../updateprop.php?error=stmtfailed");
+            exit();
+        }
+        
+        mysqli_stmt_bind_param($stmt, "sssi" , $rent, $occupied, $lease, $id);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
+        header("location: ../manageprop.php?error=none");
+        exit();
+    }
+

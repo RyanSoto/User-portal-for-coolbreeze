@@ -29,7 +29,7 @@
                     ?>
                     <p>Time to take care of business!</p>
                     <section class="admin-categories">
-                        <h2>Some Basic Categories</h2>
+                        <h2>Make changes to the database or create a document</h2>
                         <div class="admin-categories-list">
                             <div>
                                 <h3><a href='manageprop.php'>Manage Properties</a></h3>
