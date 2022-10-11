@@ -29,22 +29,16 @@
                     ?>
                     <p>Time to take care of business!</p>
                     <section class="admin-categories">
-                        <h2>Some Basic Categories</h2>
+                        <h2>Manage Properties</h2>
                         <div class="admin-categories-list">
                             <div>
-                                <h3><a href='manageprop.php'>Manage Properties</a></h3>
-                            </div>
-                            <div>
-                                <h3>Manage Residents</h3>
-                            </div>
-                            <div>
-                                <h3>Manage Maintenance/Repair Requests</h3>
-                            </div>
-                            <div>
-                                <h3><a href='makedoc.php'>Create a document</a></h3>
+                                <h3>Update</h3>
                             </div>
                         </div>
                     </section>
+                    <?php
+                        adminShowProp($conn)
+                    ?>
                 </div>
             </section>
         

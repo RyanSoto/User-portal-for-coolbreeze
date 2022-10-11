@@ -4,13 +4,14 @@
 
             <section class="container">
                 <div class="inner-container">
+                <h1>Welcome to the resident portal</h1>
                     <?php
                             if (isset($_SESSION["useruid"])) {
                                 echo "<p>Howdy " . $_SESSION["useruid"] ."</p>";
 
                             }
                     ?>
-                    <h1>Welcome to the resident portal</h1>
+                    
                     <p>Make a payment or request maintenance/repair</p>
                 
                     <section class="index-categories">
