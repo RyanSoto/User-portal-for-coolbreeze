@@ -53,6 +53,8 @@ body {
     font-family: mont;
     border: solid;
     border-color: #c59d55;
+    border-width: 1px 1px 1px 1px;
+    border-radius: 5px 5px 5px 5px;
 
 }
 

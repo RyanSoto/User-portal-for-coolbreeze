@@ -202,7 +202,8 @@ function adminShowProp($conn) {
     echo"<tr><td></td><td>Id</td><td>Street Address</td><td>Apt/Unit #</td><td>City</td><td>State</td><td>Zip Code</td><td>Rent</td><td>Occupied?</td><td>Lease</td></tr>";
     if ($resultCheck > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
-            echo"<tr><td><form action='includes/updateprop.inc.php' method='post'><button type='submit' name='update'>Update</button></form></td><td>{$row["propId"]}</td><td>{$row["streetAd"]}</td><td>{$row["apt"]}</td><td>{$row["city"]}</td>
+            echo"<tr><td><form action='includes/updateprop.inc.php' method='post'><button type='submit' name='update'>Update</button></form></td>
+            <td>{$row["propId"]}</td><td>{$row["streetAd"]}</td><td>{$row["apt"]}</td><td>{$row["city"]}</td>
             <td>{$row["state"]}</td><td>{$row["zipCode"]}</td><td>$ {$row["rentTot"]}</td><td>{$row["occupied"]}</td>
             <td>{$row["leaseTerm"]}</td></tr>";
         }
