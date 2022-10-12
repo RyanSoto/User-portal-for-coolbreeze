@@ -5,20 +5,34 @@
     <section class="container">
         <div class="inner-container">
         <h2>Sign Up</h2>
-        <form action="includes/signup.inc.php" method="post">
-            <p>Full Name</p>
-            <input type="text" name="name" placeholder="Full name...">
-            <p>E-mail</p>
-            <input type="text" name="email" placeholder="Email...">
-            <p>User Name</p>
-            <input type="text" name="uid" placeholder="Username...">
-            <p>Password</p>
-            <input type="password" name="pwd" placeholder="Password...">
-            <p>Repeat Password</p>
-            <input type="password" name="pwdrepeat" placeholder="Repeat password...">
-            <br> <br>
-            <button type="submit" name="submit">Sign Up</button>
-        </form>
+        <div class="form-holder">
+            <form action="includes/signup.inc.php" method="post">
+                <div class="form-double">
+                    <div class="form-unique">
+                        <label>Full Name</label>
+                        <input type="text" name="name" placeholder="Full name...">
+                    <div class="form-unique">
+                        <label>E-mail</label>
+                        <input type="text" name="email" placeholder="Email...">
+                </div>
+                <div class="form-triple">
+                    <div class="form-unique">
+                        <label>User Name</label>
+                        <input type="text" name="uid" placeholder="Username...">
+                    </div>
+                    <div class="form-unique">
+                        <label>Password</label>
+                        <input type="password" name="pwd" placeholder="Password...">
+                    </div>
+                    <div class="form-unique">
+                        <label>Repeat Password</label>
+                        <input type="password" name="pwdrepeat" placeholder="Repeat password...">
+                    </div>
+                </div>
+                <br> 
+                <button type="submit" name="submit">Sign Up</button>
+            </form>
+        </div>
         </div>
         <?php
         if (isset($_GET["error"])) {

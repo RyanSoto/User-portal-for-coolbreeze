@@ -5,14 +5,20 @@
     <section class="container">
         <div class="inner-container">
         <h2>Log in</h2>
+        <div class="form-holder"> 
             <form action="includes/login.inc.php" method="post">
-                <p>User Name</p>
+            <div class="form-unique"> 
+                <label>User Name</label>
                 <input type="text" name="uid" placeholder="Username/Email...">
-                <p>Password</p>
+            </div>
+                <div class="form-unique"> 
+                <label>Password</label>
                 <input type="password" name="pwd" placeholder="Password...">
-                <br><br>
+            </div>
+                <br>
                 <button type="submit" name="submit">Log in</button>
             </form>
+        </div>
         </div>
         <?php
         if (isset($_GET["error"])) {
