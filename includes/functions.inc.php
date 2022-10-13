@@ -267,12 +267,12 @@ function adminShowAllResi($conn) {
     $resultCheck = mysqli_num_rows($result);
     echo" <table border= '1'>";
     echo"<tr><td></td><td>Id</td><td>Account Number</td><td>Name</td><td>E-mail</td><td>Associated Property</td>
-    <td>Maintenance Requests</td><td>Paid this month?</td><td>Balance</td>";
+    <td>Paid this month?</td><td width='150'>Balance</td>";
     if ($resultCheck > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
             echo"<tr><td><a href='updateresi.php?id={$row["id"]}' method='post'><button type='submit' name='update'>Update</button></a></td>
             <td>{$row["id"]}</td><td>{$row["accNum"]}</td><td>{$row["name"]}</td><td>{$row["email"]}</td>
-            <td>{$row["assocProp"]}</td><td>{$row["maintReq"]}</td><td>{$row["havepaid"]}</td><td>$ {$row["bal"]}</td>
+            <td>{$row["assocProp"]}</td><td>{$row["havepaid"]}</td><td>$ {$row["bal"]}</td>
             </tr>";
         }
     }echo"</table>";
@@ -289,16 +289,16 @@ function adminShowResi($conn) {
         echo" <form action='includes/updateresi.inc.php' method='post'>";
         echo" <table border= '1'>";
         echo"<tr><td>Id</td><td>Account Number</td><td>Name</td><td>E-mail</td><td>Associated Property</td>
-            <td>Maintenance Requests</td><td>Paid this month?</td><td>Balance</td>";
+            <td>Paid this month?</td><td>Balance</td>";
         echo"<tr><td>{$row["id"]}</td><td>{$row["accNum"]}</td><td>{$row["name"]}</td><td>{$row["email"]}</td>
-            <td>{$row["assocProp"]}</td><td>{$row["maintReq"]}</td>
-            <td><select style='width:100px' name='havepaid'> 
+            <td>{$row["assocProp"]}</td>
+            <td><select style='width:190px' name='havepaid'> 
                 <option value='{$row["havepaid"]}'>{$row["havepaid"]}</option>
                 <option value='No'>No</option>
                 <option value='Payment Scheduled'>Payment Scheduled</option>
                 <option value='Yes'>Yes</option>
             </select></td>
-            <td>$ <input style='width:75px' type='text' name='balance' value='{$row["bal"]}'></td>
+            <td class='cell-dollar-sign'>$<input style='width:120px' type='text' name='balance' value={$row["bal"]}></input></td>
             <input type='hidden' name='id' value='$id'>
             </table><button type='submit' name='submit'>Update</button>";
         echo" </form>";
