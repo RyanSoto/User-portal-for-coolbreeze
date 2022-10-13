@@ -25,16 +25,14 @@ $_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
 
 if (isset($_POST["submit"])) {
     $id = $_POST['id'];
-    $havepaid = $_POST["havepaid"];
-    $balance = $_POST["balance"];
-    // $lease = $_POST["leaseTerm"];
+    $status = $_POST["status"];
 
     require_once 'dbh.inc.php';
     require_once 'functions.inc.php';
 
-    updateResiDB($conn, $id, $havepaid, $balance);
+    updateReq($conn, $id, $status);
 
 }   else {
-    header("location: ../updateresi.php");
+    header("location: ../updatereqp.php");
     exit();
 }

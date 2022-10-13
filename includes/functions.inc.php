@@ -280,8 +280,6 @@ function adminShowAllResi($conn) {
 
 function adminShowResi($conn) {
     if (isset($_GET['id'])) {
-        // require_once 'includes/dbh.inc.php';
-        // include_once 'includes/functions.inc.php';
 
         $id = mysqli_real_escape_string($conn, $_GET['id']);
 
@@ -297,7 +295,7 @@ function adminShowResi($conn) {
             <td><select style='width:100px' name='havepaid'> 
                 <option value='{$row["havepaid"]}'>{$row["havepaid"]}</option>
                 <option value='No'>No</option>
-                <option value=Payment Scheduled'>Payment Scheduled</option>
+                <option value='Payment Scheduled'>Payment Scheduled</option>
                 <option value='Yes'>Yes</option>
             </select></td>
             <td>$ <input style='width:75px' type='text' name='balance' value='{$row["bal"]}'></td>
@@ -319,5 +317,61 @@ function updateResiDB($conn, $id, $havepaid, $balance) {
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
     header("location: ../manageresi.php?error=none");
+    exit();
+}
+
+function adminCurrentReq($conn) {
+    $sql = "SELECT * FROM main_req;";
+    $result = mysqli_query($conn, $sql);
+    $resultCheck = mysqli_num_rows($result);
+    echo" <table border= '1'>";
+    echo"<tr><td></td><td>Id</td><td>Status</td><td>Property</td><td>Resident</td><td>Urgency</td><td>Type</td><td>Description</td></tr>";
+    if ($resultCheck > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo"<tr><td><a href='updatereq.php?id={$row["id"]}' method='post'><button type='submit' name='update'>Update</button></a></td>
+            <td>{$row["id"]}</td><td>{$row["status"]}</td><td>{$row["assocProp"]}</td><td>{$row["resident"]}</td>
+            <td>{$row["urgency"]}</td><td>{$row["typeOf"]}</td><td>{$row["descrip"]}</td></tr>";
+        }
+    }echo"</table>";
+}
+
+function adminShowReq($conn) {
+    if (isset($_GET['id'])) {
+
+        $id = mysqli_real_escape_string($conn, $_GET['id']);
+
+        $sql = "SELECT * FROM main_req WHERE id='$id';";
+        $result = mysqli_query($conn, $sql) or die("Bad Query: $sql");
+        $row =mysqli_fetch_array($result);
+        echo" <form action='includes/updatereq.inc.php' method='post'>";
+        echo" <table border= '1'>";
+        echo"<tr><td>Id</td><td>Status</td><td>Property</td><td>Resident</td><td>Urgency</td><td>Type</td><td>Description</td></tr>";
+        echo"<tr><td>{$row["id"]}</td>            
+        <td><select style='width:190px' name='status'>
+            <option value={$row["status"]}> {$row["status"]}</option>
+            <option value='Request Sent'>Request Sent</option>
+            <option value='Accepted''>Accepted</option>
+            <option value='Resolved'>Resolved</option>
+            </select></td>
+            <td>{$row["assocProp"]}</td><td>{$row["resident"]}</td>
+            <td>{$row["urgency"]}</td><td>{$row["typeOf"]}</td><td>{$row["descrip"]}</td>
+            <input type='hidden' name='id' value='$id'>
+            </table><button type='submit' name='submit'>Update</button>";
+        echo" </form>";
+    }
+}
+
+function updateReq($conn, $id, $status) {
+    $sql = "UPDATE main_req SET status = ? WHERE id = ?;";
+    $stmt= mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("location: ../updatereq.php?error=stmtfailed");
+        exit();
+    }
+    
+    mysqli_stmt_bind_param($stmt, "si" , $status, $id);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+    header("location: ../managemaint.php?error=none");
     exit();
 }

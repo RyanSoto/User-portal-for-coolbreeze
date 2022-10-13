@@ -11,8 +11,8 @@
         header("location: login.php?error=notuser");
         exit();
     }
-    
-    if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 5)) {
+
+    if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1200)) {
         // last request was more than 30 minutes ago
         echo "<script>alert('You were logged out for inactivity.');window.location.href='login.php';</script>";
         session_unset();     // unset $_SESSION variable for the run-time 

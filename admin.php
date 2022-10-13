@@ -17,7 +17,7 @@
 
     if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1200)) {
         // last request was more than 30 minutes ago
-        echo "<script>alert('You were logged out for inactivity.');window.location.href='login.php';</script>";
+        echo "<script>alert('You were logged out for inactivity.');window.location.href='login.php';</script>"; // alert user and redirect
         session_unset();     // unset $_SESSION variable for the run-time 
         session_destroy();   // destroy session data in storage
 
@@ -49,7 +49,7 @@
                                 <h3><a href='manageresi.php'>Manage Residents</a></h3>
                             </div>
                             <div>
-                                <h3>Manage Maintenance/Repair Requests</h3>
+                                <h3><a href='managemaint.php'>Manage Maintenance/Repair Requests</a></h3>
                             </div>
                             <div>
                                 <h3><a href='makedoc.php'>Create a document</a></h3>
