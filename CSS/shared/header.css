@@ -21,7 +21,7 @@
 
 .header-sec {
     display: flex;
-    margin: auto;
+    margin: 0 auto;
     width: 1080px;
     display: flex;
     align-items: center;

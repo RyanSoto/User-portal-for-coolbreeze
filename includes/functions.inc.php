@@ -247,7 +247,7 @@ function adminShowProp($conn) {
 }
 
 function updatePropDB($conn, $id, $rent, $occupied, $lease) {
-        $sql = "UPDATE property SET rentTot = ?, occupied = ?, leaseTerm = ? WHERE propid = ?;";
+        $sql = "UPDATE property SET rentTot = ?, occupied = ?, leaseTerm = ? WHERE propId = ?;";
         $stmt= mysqli_stmt_init($conn);
         if (!mysqli_stmt_prepare($stmt, $sql)) {
             header("location: ../updateprop.php?error=stmtfailed");
@@ -259,5 +259,65 @@ function updatePropDB($conn, $id, $rent, $occupied, $lease) {
         mysqli_stmt_close($stmt);
         header("location: ../manageprop.php?error=none");
         exit();
-    }
+}
 
+function adminShowAllResi($conn) {
+    $sql = "SELECT * FROM residents;";
+    $result = mysqli_query($conn, $sql);
+    $resultCheck = mysqli_num_rows($result);
+    echo" <table border= '1'>";
+    echo"<tr><td></td><td>Id</td><td>Account Number</td><td>Name</td><td>E-mail</td><td>Associated Property</td>
+    <td>Maintenance Requests</td><td>Paid this month?</td><td>Balance</td>";
+    if ($resultCheck > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo"<tr><td><a href='updateresi.php?id={$row["id"]}' method='post'><button type='submit' name='update'>Update</button></a></td>
+            <td>{$row["id"]}</td><td>{$row["accNum"]}</td><td>{$row["name"]}</td><td>{$row["email"]}</td>
+            <td>{$row["assocProp"]}</td><td>{$row["maintReq"]}</td><td>{$row["havepaid"]}</td><td>$ {$row["bal"]}</td>
+            </tr>";
+        }
+    }echo"</table>";
+}
+
+function adminShowResi($conn) {
+    if (isset($_GET['id'])) {
+        // require_once 'includes/dbh.inc.php';
+        // include_once 'includes/functions.inc.php';
+
+        $id = mysqli_real_escape_string($conn, $_GET['id']);
+
+        $sql = "SELECT * FROM residents WHERE id='$id';";
+        $result = mysqli_query($conn, $sql) or die("Bad Query: $sql");
+        $row =mysqli_fetch_array($result);
+        echo" <form action='includes/updateresi.inc.php' method='post'>";
+        echo" <table border= '1'>";
+        echo"<tr><td>Id</td><td>Account Number</td><td>Name</td><td>E-mail</td><td>Associated Property</td>
+            <td>Maintenance Requests</td><td>Paid this month?</td><td>Balance</td>";
+        echo"<tr><td>{$row["id"]}</td><td>{$row["accNum"]}</td><td>{$row["name"]}</td><td>{$row["email"]}</td>
+            <td>{$row["assocProp"]}</td><td>{$row["maintReq"]}</td>
+            <td><select style='width:100px' name='havepaid'> 
+                <option value='{$row["havepaid"]}'>{$row["havepaid"]}</option>
+                <option value='No'>No</option>
+                <option value=Payment Scheduled'>Payment Scheduled</option>
+                <option value='Yes'>Yes</option>
+            </select></td>
+            <td>$ <input style='width:75px' type='text' name='balance' value='{$row["bal"]}'></td>
+            <input type='hidden' name='id' value='$id'>
+            </table><button type='submit' name='submit'>Update</button>";
+        echo" </form>";
+    }
+}
+
+function updateResiDB($conn, $id, $havepaid, $balance) {
+    $sql = "UPDATE residents SET havepaid = ?, bal = ? WHERE id = ?;";
+    $stmt= mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("location: ../updateresi.php?error=stmtfailed");
+        exit();
+    }
+    
+    mysqli_stmt_bind_param($stmt, "ssi" , $havepaid, $balance, $id);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+    header("location: ../manageresi.php?error=none");
+    exit();
+}

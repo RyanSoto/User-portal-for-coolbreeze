@@ -13,7 +13,7 @@
         header("location: login.php?error=notadmin");
         exit();
     }
-    
+
     if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1200)) {
         // last request was more than 30 minutes ago
         echo "<script>alert('You were logged out for inactivity.');window.location.href='login.php';</script>";
@@ -38,7 +38,7 @@
                     ?>
                     <p>Time to take care of business!</p>
                     <section class="admin-categories">
-                        <h2>Manage Properties</h2>
+                        <h2>Manage Residents</h2>
                         <div class="admin-categories-list">
                             <div>
                                 <h3>Update</h3>
@@ -46,7 +46,7 @@
                         </div>
                     </section>
                     <?php
-                        adminShowAllProp($conn)
+                        adminShowAllResi($conn)
                     ?>
                 </div>
             </section>

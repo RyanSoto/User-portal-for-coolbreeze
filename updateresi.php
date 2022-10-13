@@ -32,9 +32,9 @@
 
     <section class="container">
                     <div class="inner-container">
-                        <h1>Update Property</h1>
+                        <h1>Update Resident</h1>
                         <?php
-                        adminShowProp($conn)
+                        adminShowResi($conn)
                         ?>
                     </div>
     </section>
