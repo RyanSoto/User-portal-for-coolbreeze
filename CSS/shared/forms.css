@@ -1,0 +1,16 @@
+.form-holder{
+    min-height: 500px; 
+    height: max-content;  
+}
+
+.form-double {
+    display: flex;
+}
+
+.form-triple{
+    display: flex;
+}
+
+.form-unique{
+    padding: 5px;
+}

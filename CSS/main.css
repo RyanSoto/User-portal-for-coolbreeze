@@ -1,6 +1,7 @@
 @import 'shared/header.css';
 @import 'shared/variables.css';
 @import 'shared/footer.css';
+@import 'shared/forms.css';
 
 /* header font */
 @font-face {
@@ -102,18 +103,6 @@ a:hover {
 
 }
 
-.form-holder{
-    min-height: 500px; 
-    height: max-content;  
-}
-
-/* .form-double{
-
-} */
-
-.form-unique{
-    padding: 5px;
-}
 
 input {
     font-family: inherit;
