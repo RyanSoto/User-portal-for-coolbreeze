@@ -14,3 +14,37 @@
 .form-unique{
     padding: 5px;
 }
+
+.form-first {
+clear: both;
+margin-left: 0;
+}
+
+.form-one-half {
+    padding: 5px;
+    width: 48%;
+}
+
+.form-one-third {
+    padding: 5px;
+    width: 30.6666666667%;
+    /* float: left; */
+}
+
+.form-two-thirds{ 
+    padding: 5px;
+    width: 65.3333333333%;
+    /* float: left; */
+}
+
+.form-small {
+    max-width: 30%;
+}
+
+.form-medium {
+    max-width: 60%;
+}
+
+.form-large {
+    max-width: 100%;
+}

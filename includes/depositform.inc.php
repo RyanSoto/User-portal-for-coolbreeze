@@ -60,7 +60,7 @@ if ((isset($_POST["submit"])) || (isset($_POST["download"]))) {
 } else {
     $applicant = '';
     $address = '';
-    $depoAmount = '400';
+    $depoAmount = '';
     $todayDate = date('Y-m-d');
     $endDate = '' ;
 };

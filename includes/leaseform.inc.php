@@ -1,15 +1,15 @@
 <?php 
-    session_start();
-    if (!isset($_SESSION["useruid"]))
-    {
-        header("location:login.php?error=notloggedin");
-        exit();
-    } else 
+    // session_start();
+    // if (!isset($_SESSION["useruid"]))
+    // {
+    //     header("location:login.php?error=notloggedin");
+    //     exit();
+    // } else 
 
-    if  ($_SESSION["usertype"] == "user") {
-        header("location: login.php?error=notadmin");
-        exit();
-    }
+    // if  ($_SESSION["usertype"] == "user") {
+    //     header("location: login.php?error=notadmin");
+    //     exit();
+    // }
 
 require('../fpdf/fpdf.php');
 class PDF extends FPDF
@@ -27,6 +27,7 @@ function Footer()
     // Page number
     $this->Cell(0,10,'Page '.$this->PageNo().'/{nb}',0,0,'C');
 }
+
 protected $B = 0;
 protected $I = 0;
 protected $U = 0;
@@ -112,32 +113,57 @@ function PutLink($URL, $txt)
     $this->SetTextColor(0);
 }
 }
+if ((isset($_POST["submit"])) || (isset($_POST["download"]))) {
 
+    $owner = 'Robert Soto';
+    $ownerAdd = ''; //$_POST["ownerAdd"];
+    $tenant = $_POST["tenant"];
+    $address = $_POST["address"];
+    $depoAmount = $_POST["depoAmount"];
+    $todayDay = date('jS');
+    $todayMonth = date('F');
+    $todayYear = date('y');
+    $leaseTerm= $_POST["leaseTerm"];
+    $lsday= $_POST["lsday"];
+    $lsmonth= $_POST["lsmonth"];
+    $lsyear= $_POST["lsyear"];
+    $leday= $_POST["leday"];
+    $lemonth= $_POST["lemonth"];
+    $leyear= $_POST["leyear"];
+    $rentTot= $_POST["rentTot"];
+    $rentMon= $_POST["rentMon"];
+    $prorate= $_POST["prorate"];
+    $occupanymax= $_POST["occupanymax"];
+    $maxVehicles= $_POST["maxVehicles"];
+    $specialProv= $_POST["specialProv"];
 
-$owner = 'Robert Soto';
-$ownerAdd = $_POST["ownerAdd"];
-$tenant = $_POST["tenant"];
-$address = $_POST["address"];
-$depoAmount = $_POST["depoAmount"];
-$todayDay = $_POST["todayDay"];
-$todayMonth = $_POST["todayMonth"];
-$todayYear = $_POST["todayYear"];
-$leaseTerm= $_POST["leaseTerm"];
-$lsday= $_POST["lsday"];
-$lsmonth= $_POST["lsmonth"];
-$lsyear= $_POST["telsyearnant"];
-$leday= $_POST["leday"];
-$lemonth= $_POST["lemonth"];
-$leyear= $_POST["leyear"];
-$rentTot= $_POST["rentTot"];
-$rentMon= $_POST["rentMon"];
-$prorate= $_POST["prorate"];
-$occupanymax= $_POST["occupanymax"];
-$maxVehicles= $_POST["maxVehicles"];
-$specialProv= $_POST["specialProv"];
+    $fileName = $tenant . "Lease.pdf";
+} else  {
+    $owner = 'Robert Soto';
+    $ownerAdd = '                                                                             ';
+    $tenant = '                     ';
+    $address = '                                                                                ';
+    $depoAmount = '        ';
+    $todayDay = date('jS');
+    $todayMonth = date('F');
+    $todayYear = date('y');
+    $leaseTerm= '               ';
+    $lsday= '        ';
+    $lsmonth= '                     ';
+    $lsyear= '        ';
+    $leday= '        ';
+    $lemonth= '                     ';
+    $leyear= '        ';
+    $rentTot= '        ';
+    $rentMon= '        ';
+    $prorate= '        ';
+    $occupanymax= '        ';
+    $maxVehicles= '        ';
+    $specialProv= '                                                                                                                                                                                       ';
 
-$fileName = $tenant . "Lease.pdf";
+    $fileName = "Lease.pdf";
 
+}
 
 //FPDF Start
 $pdf = new PDF();

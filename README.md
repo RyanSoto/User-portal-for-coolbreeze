@@ -51,3 +51,5 @@ Vacancy indicator
 Admin page - update properties, update residents, manage maintenace and repair, Create Lease or Deposit forms which are emailed to resident.
 
 User page - View property, pay bill, request main_rep
+
+Things clarify. Lease: Late fees per day . Paragraph 8 all bills paid. Owner Address. For Lease Sign days
