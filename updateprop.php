@@ -1,5 +1,3 @@
-<!-- update rent, occupied, lease -->
-
 <?php
 
 
