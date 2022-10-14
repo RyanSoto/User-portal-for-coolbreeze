@@ -42,6 +42,13 @@ body {
     /* background: rgb(66, 66, 66);  linear-gradient(to right, var(--color-background-light), var(--color-background-dark)) */
 }
 
+@media only screen and (max-width: 959px) {
+body .wrapper .container .inner-container .header-nav{
+    width: auto;
+    position: relative;
+}
+}
+
 .container {
     background: #007793;
     max-width: 1140px;
@@ -66,6 +73,11 @@ body {
     padding-bottom: 20px;
 
 }
+
+@media only screen and (max-width: 959px) {
+    .inner-container {
+        width: auto;
+    }
 
 .page-header {
     font-size: 2rem;

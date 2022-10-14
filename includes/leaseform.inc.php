@@ -1,15 +1,15 @@
 <?php 
-    // session_start();
-    // if (!isset($_SESSION["useruid"]))
-    // {
-    //     header("location:login.php?error=notloggedin");
-    //     exit();
-    // } else 
+    session_start();
+    if (!isset($_SESSION["useruid"]))
+    {
+        header("location:login.php?error=notloggedin");
+        exit();
+    } else 
 
-    // if  ($_SESSION["usertype"] == "user") {
-    //     header("location: login.php?error=notadmin");
-    //     exit();
-    // }
+    if  ($_SESSION["usertype"] == "user") {
+        header("location: login.php?error=notadmin");
+        exit();
+    }
 
 require('../fpdf/fpdf.php');
 class PDF extends FPDF

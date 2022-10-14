@@ -1,4 +1,5 @@
 .form-holder{
+    width: auto;
     min-height: 500px; 
     height: max-content;  
 }

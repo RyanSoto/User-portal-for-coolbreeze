@@ -42,7 +42,7 @@
                         </div>
                         <div class="form-two-thirds">
                             <label> Address</label>
-                            <input style="width: 400px" type="text" name="address" placeholder="Address">
+                            <input type="text" name="address" placeholder="Address">
                         </div>
                     </div>
                     <div class="form-double">

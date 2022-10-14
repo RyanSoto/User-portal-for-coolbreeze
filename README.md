@@ -52,4 +52,4 @@ Admin page - update properties, update residents, manage maintenace and repair, 
 
 User page - View property, pay bill, request main_rep
 
-Things clarify. Lease: Late fees per day . Paragraph 8 all bills paid. Owner Address. For Lease Sign days
+Things clarify. Lease: Late fees per day . Paragraph 8 all bills paid. Owner Address. For Lease Sign days. Receipt
