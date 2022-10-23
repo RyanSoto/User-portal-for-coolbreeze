@@ -12,8 +12,8 @@
     display: flex;
 }
 
-.form-unique{
-    padding: 5px;
+.form-single{
+    display: flex;
 }
 
 .form-first {
@@ -21,21 +21,30 @@ clear: both;
 margin-left: 0;
 }
 
+.form-whole {
+    padding: 10px;
+    width: 100%;
+}
+
 .form-one-half {
-    padding: 5px;
+    padding: 10px;
     width: 48%;
 }
 
 .form-one-third {
-    padding: 5px;
+    padding: 10px;
     width: 30.6666666667%;
     /* float: left; */
 }
 
 .form-two-thirds{ 
-    padding: 5px;
+    padding: 10px;
     width: 65.3333333333%;
     /* float: left; */
+}
+
+.form-tiny {
+    max-width: 50%;
 }
 
 .form-small {
@@ -49,3 +58,21 @@ margin-left: 0;
 .form-large {
     max-width: 100%;
 }
+
+.tick-down{
+    margin-top:1.5em;
+}
+
+.required-label {
+    color: #ff0000;
+    font-weight: 400;
+}
+
+input[type="radio"] {
+    float: left;
+    width: auto;
+    margin-left: 1em;
+    margin-right: 1em;
+    /* clear: none; */
+}
+

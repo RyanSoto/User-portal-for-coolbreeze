@@ -1,16 +1,7 @@
 <?php
     include_once 'header.php';
     
-    if (!isset($_SESSION["useruid"]))
-    {
-        header("location:login.php?error=notloggedin");
-        exit();
-    } else 
-
-    if  ($_SESSION["usertype"] == "admin") {
-        header("location: login.php?error=notuser");
-        exit();
-    }
+    userCheck();
 
     if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1200)) {
         // last request was more than 30 minutes ago
@@ -27,7 +18,7 @@
         <h2>Please select a type of repair needed, urgency of the request, and write a short description.</h2>
         <div class="form-holder"> 
             <form action="includes/maintreq.inc.php" method="post">
-            <div class="form-unique">
+            <div class="form-single">
             <label for="typeOf">What type of repair</label>
             <select id="typeOf" name="typeOf">
                 <option value="plumbing">Plumbing</option>
@@ -36,7 +27,7 @@
                 <option value="other">Other</option>
             </select>
             </div>
-            <div class="form-unique">
+            <div class="form-single">
             <label for="urgency">Urgency</label>
             <select id="urgency" name="urgency">
                 <option value="attention">Attention please</option>
@@ -44,7 +35,7 @@
                 <option value="emergency">Emergency!</option>
             </select>
             </div>
-            <div class="form-unique">
+            <div class="form-single">
                 <label>Short Description </label>
                 <textarea maxlength="256" name="descrip" style="width:540px; height:180px;"></textarea> 
             </div>

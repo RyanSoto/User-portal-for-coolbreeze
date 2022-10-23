@@ -375,3 +375,63 @@ function updateReq($conn, $id, $status) {
     header("location: ../managemaint.php?error=none");
     exit();
 }
+
+function userCheck() {
+    if (!isset($_SESSION["useruid"]))
+    {
+        header("location:login.php?error=notloggedin");
+        exit();
+    } else 
+
+    if  ($_SESSION["usertype"] == "admin") {
+        header("location: login.php?error=notuser");
+        exit();
+    }
+}
+
+function adminCheck() {
+    if (!isset($_SESSION["useruid"]))
+    {
+        header("location:login.php?error=notloggedin");
+        exit();
+    } else 
+
+    if  ($_SESSION["usertype"] == "user") {
+        header("location: login.php?error=notadmin");
+        exit();
+    }
+}
+
+function postApp($conn, $appAddress, $lengthOfOcc, $moveindate, $name, $email, $phone, $lastadd, 
+$city, $state, $zipCode, $monthRent, $lastaddlen, $employmentstat, $company, $grossinc,  
+$pets, $petsdescrip, $onlyoccupant, $occupant2name, $occupant2relation, $occupant3name, $occupant3relation, $haveSSN, 
+$SSN, $dob, $haveEviction, $eviction, $haveFelony, $felony, $comments) {
+
+
+    $sql = "INSERT INTO applications (appAddress, lengthOfOcc, moveindate, name, email, phone, lastadd, 
+    city, state, zipCode, monthRent, lastaddlen, employmentstat, company, grossinc,  
+    pets, petsdescrip, onlyoccupant, occupant2name, occupant2relation, occupant3name, occupant3relation, haveSSN, 
+    SSN, dob, haveEviction, eviction, haveFelony, felony, comments) VALUES (?, ?, ?, ?, ?, ?, ?, 
+    ?, ?, ?, ?, ?, ?, ?, ?,  
+    ?, ?, ?, ?, ?, ?, ?, ?, 
+    ?, ?, ?, ?, ?, ?, ?);";
+    $stmt= mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("location: ../application.php?error=stmtfailed");
+        exit();
+    }
+
+    // $hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
+    
+    mysqli_stmt_bind_param($stmt, "ssssssssssssssssssssssssssssss" , $appAddress, $lengthOfOcc, $moveindate, $name, $email, $phone, $lastadd, 
+    $city, $state, $zipCode, $monthRent, $lastaddlen, $employmentstat, $company, $grossinc,  
+    $pets, $petsdescrip, $onlyoccupant, $occupant2name, $occupant2relation, $occupant3name, $occupant3relation, $haveSSN, 
+    $SSN, $dob, $haveEviction, $eviction, $haveFelony, $felony, $comments);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+    header("location: ../application.php?error=none");
+    exit();
+
+    
+    
+}

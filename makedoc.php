@@ -2,17 +2,11 @@
 
 
     include_once 'header.php';
+    
+    include_once 'includes/dbh.inc.php';
+    include_once 'includes/functions.inc.php';
 
-    if (!isset($_SESSION["useruid"]))
-    {
-        header("location:login.php?error=notloggedin");
-        exit();
-    } else 
-
-    if  ($_SESSION["usertype"] == "user") {
-        header("location: login.php?error=notadmin");
-        exit();
-    }
+    adminCheck();
     
     if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1200)) {
         // last request was more than 30 minutes ago
@@ -23,8 +17,6 @@
     }
     $_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
 
-    include_once 'includes/dbh.inc.php';
-    include_once 'includes/functions.inc.php';
 
 ?>
 
@@ -238,7 +230,7 @@
                                 <input type="text" class="form-medium" name="maxVehicles" placeholder="Maximum vehicles">
                             </div>
                         </div>
-                        <div class="form-unique">
+                        <div class="form-single">
                             <label> Special Provisions</label>
                             <input type="text" name="specialProv" placeholder="Special needs promised">
                         </div>

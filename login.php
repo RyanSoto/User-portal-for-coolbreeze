@@ -7,13 +7,15 @@
         <h2>Log in</h2>
         <div class="form-holder"> 
             <form action="includes/login.inc.php" method="post">
-            <div class="form-unique"> 
-                <label>User Name</label>
-                <input type="text" name="uid" placeholder="Username/Email...">
-            </div>
-                <div class="form-unique"> 
-                <label>Password</label>
-                <input type="password" name="pwd" placeholder="Password...">
+            <div class="form-double"> 
+                <div class="form-one-half">
+                    <label>User Name</label>
+                    <input type="text" name="uid" placeholder="Username/Email...">
+                </div>
+                <div class="form-one-half"> 
+                    <label>Password</label>
+                    <input type="password" name="pwd" placeholder="Password...">
+                </div>
             </div>
                 <br>
                 <button type="submit" name="submit">Log in</button>

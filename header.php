@@ -15,7 +15,7 @@
         <nav class="header-nav">
             <section class="header-sec">
                 <div class="icon-img"> 
-                    <a class ="header-icon" href="index.php"><img src="img/LogoMakr-1dcGhA.png" alt="Logo"></a>
+                    <a class ="header-icon" href="index.php"><img src="img/Logo.png" alt="Logo"></a>
                 </div>
                     <ul>
                         <li><a href="index.php">Home</a></li>
