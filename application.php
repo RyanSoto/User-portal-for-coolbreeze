@@ -71,7 +71,9 @@ include_once 'header.php';
                     </div>
                     <div class="form-one-third">
                         <label>Desired move-in date<span class="required-label">*</span></label>
-                        <input type="text" id="datetime" class="moveindate" data-rule-inputmask-incomplete="1" data-inputmask-alias="moveindate" data-inputmask-inputformat="mm/dd/yyyy" name="moveindate" required inputmode="numeric" required = "">
+                        <input type="text" id="datetime" class="moveindate" data-rule-inputmask-incomplete="1" data-inputmask-alias="datetime" 
+                        data-inputmask-inputformat="mm/dd/yyyy" name="moveindate" required inputmode="numeric" required = "">
+                        <div class="field-description">month/day/year</div>
                     </div>
                 </div>
                 <div class="form-triple">
@@ -93,7 +95,7 @@ include_once 'header.php';
 
                     <div class="form-one-half">
                         <label> Phone Number<span class="required-label">*</span> </label>
-                        <input type="text" name="phone" placeholder="" required="">
+                        <input type="text" name="phone" placeholder="" required="" data-rule-inputmask-incomplete="1" data-inputmask-mask="+9(999)-999-9999" value="1">
                     </div>
                 </div>
                 <div class="form-single">
@@ -123,14 +125,16 @@ include_once 'header.php';
                     </div>
                     <div class="form-one-third">
                         <label>Zip Code<span class="required-label">*</span></label>
-                        <input type="text" name="zipCode" placeholder="" required="">
+                        <input type="text" name="zipCode" placeholder="" required="" data-rule-inputmask-incomplete="1" data-inputmask-mask="99999[-9999]" 
+                        required="" inputmode="text">
                     </div>
                 </div>
                 <div class="form-triple">
                     <div class="form-one-third">
                         <!-- <div class="form-medium"> -->
                         <label> Monthly Rent/Mortgage Payments<span class="required-label">*</span> </label>
-                        <input type="text" name="monthRent" placeholder="" required="">
+                        <input type="text" name="monthRent" placeholder="" required="" data-rule-inputmask-incomplete="1" 
+                        data-inputmask-mask="$99[999]" placeholder="$" required="" inputmode="text">
                     </div>
 
                     <!-- </div> -->
@@ -162,7 +166,8 @@ include_once 'header.php';
                     </div>
                     <div class="form-one-third">
                         <label>Monthly Gross Income<span class="required-label">*</span></label>
-                        <input type="text" name="grossinc" placeholder="" required="">
+                        <input type="text" name="grossinc" placeholder="" required="" data-rule-inputmask-incomplete="1" 
+                        data-inputmask-mask="$99[999]" required="" inputmode="text" aria-invalid="false">
                     </div>
                 </div>
                 <div class="form-double">
@@ -238,11 +243,13 @@ include_once 'header.php';
                     </div>
                     <div class="form-one-third">
                         <label>SSN</label>
-                        <input type="text" name="SSN" placeholder="">
+                        <input type="text" name="SSN" placeholder="" data-rule-inputmask-incomplete="1" data-inputmask-mask="999-99-9999" inputmode="text">
                     </div>
                     <div class="form-one-third">
                         <label>Date of Birth<span class="required-label">*</span></label>
-                        <input type="text" name="dob" placeholder="" required="">
+                        <input type="text" name="dob" placeholder="" required="" data-rule-inputmask-incomplete="1" data-inputmask-alias="datetime" 
+                        data-inputmask-inputformat="mm/dd/yyyy" inputmode="numeric">
+                        <div class="field-description">month/day/year</div>
                     </div>
                 </div>
 
@@ -297,6 +304,7 @@ include_once 'header.php';
         </div>
     </div>
 </section>
+
 
 
 <?php
