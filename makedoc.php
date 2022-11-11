@@ -47,8 +47,12 @@
                             <input type="date" name="endDate" placeholder="30 days after lease expiration">
                         </div>
                     </div>
-                    <button type="submit" name="submit">Review Doc</button>
-                    <button type="submit" name="download">Download Doc</button>
+                    <div class="form-single">
+                        <div class="form-whole">
+                            <button type="submit" name="submit">Review Doc</button>
+                            <button type="submit" name="download">Download Doc</button>
+                        </div>
+                    </div>
                 </form>
             </div>
 </div>
@@ -231,12 +235,18 @@
                             </div>
                         </div>
                         <div class="form-single">
-                            <label> Special Provisions</label>
-                            <input type="text" name="specialProv" placeholder="Special needs promised">
+                            <div class="form-whole">
+                                <label> Special Provisions</label>
+                                <input type="text" name="specialProv" placeholder="Special needs promised">
+                            </div>
                         </div>
                     </div>
-                    <button type="submit" name="submit">Review Doc</button>
-                    <button type="submit" name="download">Download Doc</button>
+                    <div class="form-single">
+                        <div class="form-whole">
+                            <button type="submit" name="submit">Review Doc</button>
+                            <button type="submit" name="download">Download Doc</button>
+                        </div>
+                    </div>
                 </form>
             </div>
 </div>

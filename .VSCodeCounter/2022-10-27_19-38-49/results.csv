@@ -1,0 +1,15 @@
+"filename", "language", "PHP", "comment", "blank", "total"
+"c:\Users\ryans\PHP\DaniLogin\PHP-login-project\includes\application.inc.php", "PHP", 42, 0, 7, 49
+"c:\Users\ryans\PHP\DaniLogin\PHP-login-project\includes\bal.inc.php", "PHP", 2, 17, 4, 23
+"c:\Users\ryans\PHP\DaniLogin\PHP-login-project\includes\depositform.inc.php", "PHP", 104, 17, 36, 157
+"c:\Users\ryans\PHP\DaniLogin\PHP-login-project\includes\functions.inc.php", "PHP", 370, 3, 64, 437
+"c:\Users\ryans\PHP\DaniLogin\PHP-login-project\includes\leaseform.inc.php", "PHP", 306, 20, 69, 395
+"c:\Users\ryans\PHP\DaniLogin\PHP-login-project\includes\login.inc.php", "PHP", 16, 0, 5, 21
+"c:\Users\ryans\PHP\DaniLogin\PHP-login-project\includes\logout.inc.php", "PHP", 6, 0, 2, 8
+"c:\Users\ryans\PHP\DaniLogin\PHP-login-project\includes\maintreq.inc.php", "PHP", 19, 16, 14, 49
+"c:\Users\ryans\PHP\DaniLogin\PHP-login-project\includes\mkpay.inc.php", "PHP", 0, 0, 1, 1
+"c:\Users\ryans\PHP\DaniLogin\PHP-login-project\includes\signup.inc.php", "PHP", 34, 0, 14, 48
+"c:\Users\ryans\PHP\DaniLogin\PHP-login-project\includes\updateprop.inc.php", "PHP", 29, 1, 10, 40
+"c:\Users\ryans\PHP\DaniLogin\PHP-login-project\includes\updatereq.inc.php", "PHP", 27, 1, 10, 38
+"c:\Users\ryans\PHP\DaniLogin\PHP-login-project\includes\updateresi.inc.php", "PHP", 28, 2, 10, 40
+"Total", "-", 983, 77, 246, 1306

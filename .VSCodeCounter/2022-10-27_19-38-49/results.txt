@@ -1,0 +1,37 @@
+Date : 2022-10-27 19:38:49
+Directory : c:\Users\ryans\PHP\DaniLogin\PHP-login-project\includes
+Total : 13 files,  983 codes, 77 comments, 246 blanks, all 1306 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| PHP      |         13 |        983 |         77 |        246 |      1,306 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++-----------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                        | files      | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                           |         13 |        983 |         77 |        246 |      1,306 |
++-----------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-----------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                                    | language | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| c:\Users\ryans\PHP\DaniLogin\PHP-login-project\includes\application.inc.php | PHP      |         42 |          0 |          7 |         49 |
+| c:\Users\ryans\PHP\DaniLogin\PHP-login-project\includes\bal.inc.php         | PHP      |          2 |         17 |          4 |         23 |
+| c:\Users\ryans\PHP\DaniLogin\PHP-login-project\includes\depositform.inc.php | PHP      |        104 |         17 |         36 |        157 |
+| c:\Users\ryans\PHP\DaniLogin\PHP-login-project\includes\functions.inc.php   | PHP      |        370 |          3 |         64 |        437 |
+| c:\Users\ryans\PHP\DaniLogin\PHP-login-project\includes\leaseform.inc.php   | PHP      |        306 |         20 |         69 |        395 |
+| c:\Users\ryans\PHP\DaniLogin\PHP-login-project\includes\login.inc.php       | PHP      |         16 |          0 |          5 |         21 |
+| c:\Users\ryans\PHP\DaniLogin\PHP-login-project\includes\logout.inc.php      | PHP      |          6 |          0 |          2 |          8 |
+| c:\Users\ryans\PHP\DaniLogin\PHP-login-project\includes\maintreq.inc.php    | PHP      |         19 |         16 |         14 |         49 |
+| c:\Users\ryans\PHP\DaniLogin\PHP-login-project\includes\mkpay.inc.php       | PHP      |          0 |          0 |          1 |          1 |
+| c:\Users\ryans\PHP\DaniLogin\PHP-login-project\includes\signup.inc.php      | PHP      |         34 |          0 |         14 |         48 |
+| c:\Users\ryans\PHP\DaniLogin\PHP-login-project\includes\updateprop.inc.php  | PHP      |         29 |          1 |         10 |         40 |
+| c:\Users\ryans\PHP\DaniLogin\PHP-login-project\includes\updatereq.inc.php   | PHP      |         27 |          1 |         10 |         38 |
+| c:\Users\ryans\PHP\DaniLogin\PHP-login-project\includes\updateresi.inc.php  | PHP      |         28 |          2 |         10 |         40 |
+| Total                                                                       |          |        983 |         77 |        246 |      1,306 |
++-----------------------------------------------------------------------------+----------+------------+------------+------------+------------+

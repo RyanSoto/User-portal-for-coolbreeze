@@ -203,13 +203,13 @@ $pdf->WriteHTML($num4);
 $pdf->Ln(10);
 
 $num5= '5.  RENT. Tenant agrees to and shall pay Landlord at (mailing address) <u>      '.$ownerAdd.'      </u>,
-Or at such other place Landlord shall designate from time to time in writing, as rent for the Leased Premises, the total sum of <u>      $'.$rentTot.'      </u>, payable in advance and without demand in equal monthly payments of <u>      $'.$rentMon.'      </u> on or before the 
-<u>  10th  </u> Day of each month and continuing thereafter until the total sum shall be paid.  The prorated rent from the date of move-in to the first day of the following month is <u>      $'.$prorate.'      </u>. The prorated portion is payable on the first day of the second month of occupancy.  One full month\'s rent is due on move-in.  If any rental payment is not paid in full on or before the <u>  10th  </u> day of the month, Tenant agrees to pay a late charge of <u>  $35  </u>  , plus an additional late charge of <u>  $1  </u> per day thereafter until rental payment is paid in full. Tenants right to possession and Landlord\'s obligations are expressly contingent upon the prompt payment of rent, and the use of the Leased Premises by Tenant is obtained only on the condition that rent is paid in full on time.  Landlord may require that all monthly payment be paid in one monthly check rather than multiple checks.  All monies received by Landlord shall be applied first to non-rent obligations of the Tenant, including late charges, charges for returned checks, and pet penalties, if any, then to rent, regardless of notation on the check.  At Landlords option, Landlord may at any time require all rent and other sums be paid in cash, cashier\'s check, certified check or money order. 
+Or at such other place Landlord shall designate from time to time in writing, as rent for the Leased Premises, the total sum of $<u>      '.$rentTot.'      </u>, payable in advance and without demand in equal monthly payments of $<u>      '.$rentMon.'      </u> on or before the 
+<u>  1st  </u> Day of each month and continuing thereafter until the total sum shall be paid.  The prorated rent from the date of move-in to the first day of the following month is $<u>      '.$prorate.'      </u>. The prorated portion is payable on the first day of the second month of occupancy.  One full month\'s rent is due on move-in.  If any rental payment is not paid in full on or before the <u>  1st  </u> day of the month, Tenant agrees to pay a late charge of <u>  $35  </u> . Tenants right to possession and Landlord\'s obligations are expressly contingent upon the prompt payment of rent, and the use of the Leased Premises by Tenant is obtained only on the condition that rent is paid in full on time.  Landlord may require that all monthly payment be paid in one monthly check rather than multiple checks.  All monies received by Landlord shall be applied first to non-rent obligations of the Tenant, including late charges, charges for returned checks, and pet penalties, if any, then to rent, regardless of notation on the check.  At Landlords option, Landlord may at any time require all rent and other sums be paid in cash, cashier\'s check, certified check or money order. 
 ';
 $pdf->WriteHTML($num5);
 $pdf->Ln(10);
 
-$num6= '6.  SECURITY DEPOSIT.  Tenant agrees to pay Landlord on or before the execution of this Lease the sum of <u>      $'.$depoAmount.'      </u> as a security deposit(Deposit), for the faithful performance of the terms and conditions of this Lease by Tenant.  This Deposit shall not be constructed as rent, and any attempt by Tenant to withhold payment of the last month\'s rent on the grounds the Deposit serves as security for unpaid rent is a violation of V.T.C.A. Property Code ð 92.108. At least (30) days written notice of intent to vacate must be given to Landlord for refund of Deposit.  Refunds shall be made in accordance with this Lease.  Tenants shall not be entitled to interest on the Deposit.';
+$num6= '6.  SECURITY DEPOSIT.  Tenant agrees to pay Landlord on or before the execution of this Lease the sum of $<u>      '.$depoAmount.'      </u> as a security deposit(Deposit), for the faithful performance of the terms and conditions of this Lease by Tenant.  This Deposit shall not be constructed as rent, and any attempt by Tenant to withhold payment of the last month\'s rent on the grounds the Deposit serves as security for unpaid rent is a violation of V.T.C.A. Property Code 92.108. At least (30) days written notice of intent to vacate must be given to Landlord for refund of Deposit.  Refunds shall be made in accordance with this Lease.  Tenants shall not be entitled to interest on the Deposit.';
 $pdf->WriteHTML($num6);
 $pdf->Ln(10);
 
@@ -218,7 +218,7 @@ $pdf->WriteHTML($num7);
 $pdf->Ln(10);
 
 
-$num8= '<del>8.  UTLITIES. Tenant shall pay for electricity, gas water, telephone, and cable TV for Leased premises unless otherwise indicated in Paragraph 32 below.  Utilities shall be used only for normal household purposes and not wasted. </del>';
+$num8= '<del>8.  UTLITIES. Tenant shall pay for electricity, gas water, telephone, and cable TV for Leased premises unless otherwise stated.  Utilities shall be used only for normal household purposes and not wasted. </del>';
 $num8del= '<del>'.$num8.'</del>';
 $pdf->WriteHTML($num8);
 $pdf->Ln(10);
@@ -371,6 +371,7 @@ $pdf->Ln(30);
 
 $pdf->Cell(15);
 $pdf->Cell(60, 6, '', 'B', 1, 'C'); //Tenant Signature
+$pdf->Cell(15);
 
 $pdf->Cell(15);
 $pdf->Cell(60, 6, 'Tenant   '.$tenant, 0, 1, 'C'); 
