@@ -1,15 +1,16 @@
 <?php 
-    session_start();
-    if (!isset($_SESSION["useruid"]))
-    {
-        header("location:login.php?error=notloggedin");
-        exit();
-    } else 
+    // session_start();
 
-    if  ($_SESSION["usertype"] == "user") {
-        header("location: login.php?error=notadmin");
-        exit();
-    }
+    // if (!isset($_SESSION["useruid"]))
+    // {
+    //     header("location:login.php?error=notloggedin");
+    //     exit();
+    // } else 
+
+    // if  ($_SESSION["usertype"] == "user") {
+    //     header("location: login.php?error=notadmin");
+    //     exit();
+    // }
 
 require('../fpdf/fpdf.php');
 class PDF extends FPDF
@@ -113,20 +114,22 @@ function PutLink($URL, $txt)
     $this->SetTextColor(0);
 }
 }
-if ((isset($_POST["submit"])) || (isset($_POST["download"]))) {
+if ((isset($_POST["submit"])) || (isset($_POST["download"])) || (isset($_POST["signaturesubmit"]))) {
 
     $owner = 'Robert Soto';
     $ownerAdd = ''; //$_POST["ownerAdd"];
     $tenant = $_POST["tenant"];
     $address = $_POST["address"];
     $depoAmount = $_POST["depoAmount"];
-    $todayDay = date('jS');
-    $todayMonth = date('F');
-    $todayYear = date('y');
+    $todayDay =  $_POST["todayDay"];
+    $todayMonth =  $_POST["todayMonth"];
+    $todayYear =  $_POST["todayYear"];
     $leaseTerm= $_POST["leaseTerm"];
+    // Lease Start
     $lsday= $_POST["lsday"];
     $lsmonth= $_POST["lsmonth"];
     $lsyear= $_POST["lsyear"];
+    // Lease End
     $leday= $_POST["leday"];
     $lemonth= $_POST["lemonth"];
     $leyear= $_POST["leyear"];
@@ -136,8 +139,15 @@ if ((isset($_POST["submit"])) || (isset($_POST["download"]))) {
     $occupanymax= $_POST["occupanymax"];
     $maxVehicles= $_POST["maxVehicles"];
     $specialProv= $_POST["specialProv"];
+    $dir = $_POST["dir"];
+    $sigPng = $_POST["sigPng"];
+    $ownerPay = $_POST["ownerPay"];
+    $leaseFileName = $_POST["leaseFileName"];
+
 
     $fileName = $tenant . "Lease.pdf";
+    $fileName = str_replace(' ', '', $fileName);
+
 } else  {
     $owner = 'Robert Soto';
     $ownerAdd = '                                                                             ';
@@ -217,9 +227,12 @@ $num7= '7. DEPOSIT DEDUCTIONS. There shall be deducted from the Deposit appropri
 $pdf->WriteHTML($num7);
 $pdf->Ln(10);
 
+if ($ownerPay === 'Yes') {
+    $num8= '8.  UTLITIES. Owner shall pay for electricity, gas water, telephone, and cable TV for Leased premises unless otherwise stated.  Utilities shall be used only for normal household purposes and not wasted. </del>';
+} else if ($ownerPay === 'No'){
+$num8= '8.  UTLITIES. Tenant shall pay for electricity, gas water, telephone, and cable TV for Leased premises unless otherwise stated.  Utilities shall be used only for normal household purposes and not wasted. </del>';
+}
 
-$num8= '<del>8.  UTLITIES. Tenant shall pay for electricity, gas water, telephone, and cable TV for Leased premises unless otherwise stated.  Utilities shall be used only for normal household purposes and not wasted. </del>';
-$num8del= '<del>'.$num8.'</del>';
 $pdf->WriteHTML($num8);
 $pdf->Ln(10);
 
@@ -356,7 +369,7 @@ $pdf->Cell(15);
 $pdf->Cell(60, 6, '' , 'B', 0, 'C');    //Landlord Signature
 
 $pdf->Cell(50);
-$pdf->Cell(30, 6, '', 'B', 1, 'C');
+$pdf->Cell(30, 6, date("m/d/Y"), 'B', 1, 'C');
 
 
 $pdf->Cell(15);
@@ -370,11 +383,23 @@ $pdf->Ln(30);
 
 
 $pdf->Cell(15);
-$pdf->Cell(60, 6, '', 'B', 1, 'C'); //Tenant Signature
-$pdf->Cell(15);
+
+if (isset($_POST["signaturesubmit"])) {
+    $pdf->Image($dir . $signatureFileName , 30 , 105, 50);
+} 
+
+$pdf->Cell(60, 6, '', 'B', 0, 'C'); //Tenant Signature
+
+
+$pdf->Cell(50);
+$pdf->Cell(30, 6, date("m/d/Y"), 'B', 1, 'C');
 
 $pdf->Cell(15);
-$pdf->Cell(60, 6, 'Tenant   '.$tenant, 0, 1, 'C'); 
+$pdf->Cell(60, 6, 'Tenant   '.$tenant, 0, 0, 'C'); 
+
+$pdf->Cell(50);
+$pdf->Cell(30, 6, 'Date', 0, 1, 'C');
+
 $pdf->Ln(15);
 
 $pdf->Cell(15);
@@ -383,14 +408,17 @@ $pdf->Cell(15);
 $pdf->Cell(60, 6, 'Co-Signer', 0, 0, 'C');
 $pdf->Cell(40);
 
-$pdf->Output('I', $fileName);
+// $pdf->Output('I', $fileName);
 
-// if (isset($_POST["submit"])) {
+if (isset($_POST["submit"])) {
 
-//     $pdf->Output('I', $fileName);
+    $pdf->Output('I', $fileName);
 
-// } else if (isset($_POST["download"])) {
-//     $pdf->Output('D', $fileName);
-// }
+} else if (isset($_POST["download"])) {
+    $pdf->Output('D', $fileName);
+
+}   else if (isset($_POST["signaturesubmit"])) {
+    $pdf->Output('F', $dir . $fileName);
+}
 
 ?>

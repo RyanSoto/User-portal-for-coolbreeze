@@ -32,6 +32,7 @@ margin-left: 0;
 }
 
 .form-one-third {
+    position: relative;
     padding: 10px;
     width: 30.6666666667%;
     /* float: left; */
@@ -68,6 +69,28 @@ margin-left: 0;
     font-weight: 400;
 }
 
+.form-checkbox {
+    display: inline-block;
+}
+
+.chklabel{
+    float: right;
+    width: 90%;
+}
+
+input.leasecheck{
+    display: inline;
+
+    width: 40px;
+    height: 40px;
+    top: 20px;
+    /* margin-top: 50%; */
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    align-items: center;
+}
+
 input[type="radio"] {
     float: left;
     width: auto;
@@ -75,4 +98,3 @@ input[type="radio"] {
     margin-right: 1em;
     /* clear: none; */
 }
-

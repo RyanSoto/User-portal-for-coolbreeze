@@ -53,3 +53,5 @@ Admin page - update properties, update residents, manage maintenace and repair, 
 User page - View property, pay bill, request main_rep
 
 Things clarify. Lease: Late fees per day . Paragraph 8 all bills paid. Owner Address. For Lease Sign days. Receipt
+
+Make form should create lease variable confirmation page which will email potential resident's lease agreement to be signed and recorded.

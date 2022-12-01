@@ -20,7 +20,7 @@ class PDF extends FPDF
 function Header()
 {
     // Logo
-    $this->Image('../img/LogoMakr-1dcGhA.png',15,8,0,0);
+    $this->Image('../img/Logo.png',15,8,0,0);
     // Arial bold
     $this->SetFont('helvetica','B',10);
     // Move to the right
@@ -152,6 +152,22 @@ if (isset($_POST["submit"])) {
     $pdf->Output('I', $fileName);
 
 } else if (isset($_POST["download"])) {
+
     $pdf->Output('D', $fileName);
+
+} 
+
+else if (isset($_POST["emailsig"])) {
+
+
+
+    echo ' <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"> ';
+    echo ' <label for="vehicle1"> I have a bike</label><br> ';
+
+
+
+    $pdf->Output('I', $fileName);
 }
+
+
 ?>

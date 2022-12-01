@@ -1,14 +1,9 @@
 <?php
     include_once 'header.php';
+    include_once 'includes/functions.inc.php';
+    
+    // timeOutLogout();
 
-    if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1200)) {
-        // last request was more than 30 minutes ago
-        echo "<script>alert('You were logged out for inactivity.');window.location.href='login.php';</script>";
-        session_unset();     // unset $_SESSION variable for the run-time 
-        session_destroy();   // destroy session data in storage
-
-    }
-    $_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
 
 ?>
 
@@ -19,6 +14,26 @@
                             if (isset($_SESSION["useruid"])) {
                                 echo "<p>Howdy " . $_SESSION["useruid"] ."</p>";
 
+                            }
+                            if (isset($_GET["success"])) {
+
+                                if ($_GET["success"] == "submitted") {
+                                    
+                                    echo "<script>alert('You have successfully signed your lease.')</script>"; //;window.location.href='index.php';
+                                    echo "<p>Your lease has been submitted and filed!</p>";
+                                }
+
+                                if ($_GET["success"] == "gen") {
+                                    
+                                    echo "<script>alert('Lease generated.')</script>"; //;window.location.href='index.php';
+                                    echo "<p>The lease has been created and e-mailed to the tenant.</p>";
+                                }
+
+                                if ($_GET["success"] == "appsent") {
+                                    
+                                    echo "<script>alert('Application Sent!')</script>"; //;window.location.href='index.php';
+                                    echo "<p>The application has been sent.</p>";
+                                }
                             }
                     ?>
                     

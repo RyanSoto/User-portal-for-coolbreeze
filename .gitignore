@@ -1,2 +1,6 @@
 includes/dbh.inc.php
+includes/application.inc.php
 FPDI/
+node_modules
+includes/genleasefile.inc.php
+.vscodecounter/

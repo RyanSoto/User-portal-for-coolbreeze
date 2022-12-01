@@ -4,18 +4,10 @@
     include_once 'header.php';
     
     include_once 'includes/dbh.inc.php';
-    include_once 'includes/functions.inc.php';
+    include_once 'includes/functions.inc.php';  
 
     adminCheck();
-    
-    if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1200)) {
-        // last request was more than 30 minutes ago
-        echo "<script>alert('You were logged out for inactivity.');window.location.href='login.php';</script>";
-        session_unset();     // unset $_SESSION variable for the run-time 
-        session_destroy();   // destroy session data in storage
-
-    }
-    $_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
+    timeOutLogout();
 
 
 ?>
@@ -53,6 +45,17 @@
                             <button type="submit" name="download">Download Doc</button>
                         </div>
                     </div>
+                    <div class="form-triple">
+                        <div class="form-one-third">
+                            <div class="center">
+                              <button class ="emailbutt"type="submit" name="email">E-mail for Esign</button>        
+                            </div>
+                        </div>
+                        <div class="form-two-thirds">
+                            <label> E-mail of Signer </label>
+                            <input type="text" name="emailsig" placeholder="">
+                        </div>
+                    </div>
                 </form>
             </div>
 </div>
@@ -62,7 +65,7 @@
 <div class="inner-container">
                     <h1>Make a Residential Lease Agreement</h1>
             <div class="form-holder">     
-                <form action="includes/leaseform.inc.php" method="post">
+                <form action="includes/genleasefile.inc.php" method="post">
                     <div class="form-double">
                         <div class="form-one-third"> 
                             <label> Name of the Tenant </label>
@@ -224,16 +227,24 @@
                                 <input class="form-large" type="text" name="prorate" placeholder="Prorated 1st month">
                             </div>
                         </div>
-                        <div class="form-double">
-                            <div class="form-one-half">
+                        <div class="form-triple">
+                            <div class="form-one-third">
                                 <label> Max Occupancy </label>
                                 <input type="text" class="form-medium" name="occupanymax" placeholder="Maximum occupancy">
                             </div>
-                            <div class="form-one-half">
+                            <div class="form-one-third">
                                 <label> Max Vehicles </label>
                                 <input type="text" class="form-medium" name="maxVehicles" placeholder="Maximum vehicles">
                             </div>
-                        </div>
+                            <div class="form-one-third">
+                                <label> Owner Pays Utilities </label>
+                                <select class="form-medium" name="ownerPay" required>
+                                <option value="">Please Select</option>
+                                    <option value="No">No</option>
+                                    <option value="Yes">Yes</option>
+                                </select>
+                            </div>
+                        </div> 
                         <div class="form-single">
                             <div class="form-whole">
                                 <label> Special Provisions</label>
@@ -245,6 +256,17 @@
                         <div class="form-whole">
                             <button type="submit" name="submit">Review Doc</button>
                             <button type="submit" name="download">Download Doc</button>
+                        </div>
+                    </div>
+                    <div class="form-triple">
+                        <div class="form-one-third">
+                            <div class="center">
+                              <button class ="emailbutt" type="submit" name="email">E-mail for Esign</button>        
+                            </div>
+                        </div>
+                        <div class="form-two-thirds">
+                            <label> E-mail of Signer </label>
+                            <input type="text" name="emailsig" placeholder="">
                         </div>
                     </div>
                 </form>
