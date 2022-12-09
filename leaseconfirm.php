@@ -10,7 +10,7 @@ include_once '../header1.php';
 
 if ((isset($_POST["submit"])) || (isset($_POST["download"]))) {
 
-$owner = 'Robert Soto';
+$owner = $_POST["owner"];
 $ownerAdd = $_POST["ownerAdd"];
 $tenant = $_POST["tenant"];
 $address = $_POST["address"];
@@ -96,6 +96,8 @@ $fileName = $tenant . "Lease.pdf";
         <div class="form-single">
             <!-- <div class="form-one-half"> -->
             <form action="../../includes/leaseform.inc.php" method="post" target="_blank">
+                <input type="hidden" name="owner" value="<?= $owner ?>">
+                <input type="hidden" name="ownerAdd" value="<?= $ownerAdd ?>">
                 <input type="hidden" name="tenant" value="<?= $tenant ?>">
                 <input type="hidden" name="address" value="<?= $address ?>">
                 <input type="hidden" name="depoAmount" value="<?= $depoAmount ?>">
@@ -136,6 +138,8 @@ $fileName = $tenant . "Lease.pdf";
                 </div>
             </div>
                 <br>
+                <input type="hidden" name="owner" value="<?= $owner ?>">
+                <input type="hidden" name="ownerAdd" value="<?= $ownerAdd ?>">
                 <input type="hidden" name="tenant" value="<?= $tenant ?>">
                 <input type="hidden" name="address" value="<?= $address ?>">
                 <input type="hidden" name="depoAmount" value="<?= $depoAmount ?>">

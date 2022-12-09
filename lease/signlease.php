@@ -1,6 +1,6 @@
 <?php
 
-include_once 'header.php';
+// include_once 'header.php';
 
 // userCheck();
 // timeOutLogout();
@@ -37,7 +37,6 @@ $sigPng = $_POST["sigPng"];
 ?>
 
 
-
 <section class="container">
     <div class="inner-container">
         <?php
@@ -72,11 +71,22 @@ $sigPng = $_POST["sigPng"];
                 #canvasDiv {
                     position: relative;
                     border: 2px dashed grey;
-                    height: 300px;
+                    height: 175px;
                 }
 
                 #canvas {
                     background-color: white;
+                }
+                @media screen and (min-width: 320px) and (max-width: 767px) and (orientation: portrait) {
+                html {
+                    transform: rotate(-90deg);
+                    transform-origin: left top;
+                    width: 100vh;
+                    overflow-x: hidden;
+                    position: absolute;
+                    top: 100%;
+                    left: 0;
+                }
                 }
             </style>
         </head>
@@ -87,7 +97,7 @@ $sigPng = $_POST["sigPng"];
                 <div class="col-md-8 col-md-offset-2">
                     <br>
                     <?php echo isset($msg) ? $msg : ''; ?>
-                    <h2>HTML5 and PHP Signature Pad</h2>
+                    <h2>Sign Here</h2>
                     <hr>
                     <div id="canvasDiv"></div>
                     <br>
@@ -274,5 +284,5 @@ $sigPng = $_POST["sigPng"];
 </section>
 
 <?php
-include_once '../footer.php';
+// include_once '../footer.php';
 ?>

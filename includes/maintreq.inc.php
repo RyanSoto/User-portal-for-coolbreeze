@@ -13,10 +13,10 @@ if (isset($_POST["submit"])) {
     require_once 'dbh.inc.php';
     require_once 'functions.inc.php';
 
-    if (emptyInputMaintReq($assocProp, $resident, $urgency, $typeOf, $descrip) !== false) {
-        header("location: ../maintreq.php?error=emptyinput");
-        exit();
-    }
+    // if (emptyInputMaintReq($assocProp, $resident, $urgency, $typeOf, $descrip) !== false) {
+    //     header("location: ../maintreq.php?error=emptyinput");
+    //     exit();
+    // }
 
     // if (invalidUid($username) !== false) {
     //     header("location: ../signup.php?error=invaliduid");

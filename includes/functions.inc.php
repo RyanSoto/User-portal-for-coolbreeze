@@ -103,7 +103,8 @@ function createReq($conn, $assocProp, $resident, $urgency, $typeOf, $descrip) {
     mysqli_stmt_bind_param($stmt, "sssss" , $assocProp, $resident, $urgency, $typeOf, $descrip);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
-    header("location: ../maintreq.php?error=none");
+    echo "<script>alert('Your request has been sent!');window.location.href='../user.php?error=none';</script>"; 
+    // header("location: ../user.php?error=none");
     exit();
 
 }
@@ -167,7 +168,7 @@ function userShowBal($conn) {
 
     echo"<table border= '1'>";
     echo"<tr><td>Balance</td></tr>";
-    echo"<tr><td>{$row["bal"]}</td></tr>";
+    echo"<tr><td>$ {$row["bal"]}</td></tr>";
     echo"</table>";
 }
 
@@ -185,7 +186,7 @@ function userShowProp($conn) {
     $result = mysqli_stmt_get_result($stmt);
     $resultCheck = mysqli_num_rows($result);
     echo"<table border= '1'>";
-    echo"<tr><td>Street Address</td><td>Apt/Unit #</td><td>City</td><td>State</td><td>Zip Code</td><td>Rent</td><td>Lease</td></tr>";
+    echo"<tr><td>Street Address</td><td>Apt/Unit #</td><td>City</td><td>State</td><td>Zip Code</td><td>Rent</td><td>Leased</td></tr>";
     if ($resultCheck > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
             echo"<tr><td>{$row["streetAd"]}</td><td>{$row["apt"]}</td><td>{$row["city"]}</td>
@@ -199,7 +200,7 @@ function adminShowAllProp($conn) {
     $result = mysqli_query($conn, $sql);
     $resultCheck = mysqli_num_rows($result);
     echo" <table border= '1'>";
-    echo"<tr><td></td><td>Id</td><td>Street Address</td><td>Apt/Unit #</td><td>City</td><td>State</td><td>Zip Code</td><td>Rent</td><td>Occupied?</td><td>Lease</td></tr>";
+    echo"<tr><td></td><td>Id</td><td>Street Address</td><td>Apt/Unit #</td><td>City</td><td>State</td><td>Zip Code</td><td>Rent</td><td>Occupied?</td><td>Leased</td></tr>";
     if ($resultCheck > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
             echo"<tr><td><a href='updateprop.php?id={$row["propId"]}' method='post'><button type='submit' name='update'>Update</button></a></td>
@@ -233,10 +234,8 @@ function adminShowProp($conn) {
             </select></td>
         <td><select style='width:100px' name='leaseTerm'> 
                 <option value='{$row["leaseTerm"]}'>{$row["leaseTerm"]}</option>
-                <option value='NA'>NA</option>
-                <option value='3 month'>3 month</option>
-                <option value='6 month'>6 month</option>
-                <option value='12 month'>12 month</option>
+                <option value='No'>No</option>
+                <option value='Yes'>Yes</option>
             </select></td>
             <input type='hidden' name='id' value='$id'>
             </table><button type='submit' name='submit'>Update</button>";
@@ -261,6 +260,57 @@ function updatePropDB($conn, $id, $rent, $occupied, $lease) {
 
 function adminShowAllResi($conn) {
     $sql = "SELECT * FROM residents;";
+    $result = mysqli_query($conn, $sql);
+    $resultCheck = mysqli_num_rows($result);
+    echo" <table border= '1'>";
+    echo"<tr><td></td><td>Id</td><td>Account Number</td><td>Name</td><td>E-mail</td><td>Associated Property</td>
+    <td>Paid this month?</td><td width='150'>Balance</td>";
+    if ($resultCheck > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo"<tr><td><a href='updateresi.php?id={$row["id"]}' method='post'><button type='submit' name='update'>Update</button></a></td>
+            <td>{$row["id"]}</td><td>{$row["accNum"]}</td><td>{$row["name"]}</td><td>{$row["email"]}</td>
+            <td>{$row["assocProp"]}</td><td>{$row["havepaid"]}</td><td>$ {$row["bal"]}</td>
+            </tr>";
+        }
+    }echo"</table>";
+}
+
+function adminShowAllResiNameAsc($conn) {
+    $sql = "SELECT * FROM residents ORDER BY name ASC;";
+    $result = mysqli_query($conn, $sql);
+    $resultCheck = mysqli_num_rows($result);
+    echo" <table border= '1'>";
+    echo"<tr><td></td><td>Id</td><td>Account Number</td><td>Name</td><td>E-mail</td><td>Associated Property</td>
+    <td>Paid this month?</td><td width='150'>Balance</td>";
+    if ($resultCheck > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo"<tr><td><a href='updateresi.php?id={$row["id"]}' method='post'><button type='submit' name='update'>Update</button></a></td>
+            <td>{$row["id"]}</td><td>{$row["accNum"]}</td><td>{$row["name"]}</td><td>{$row["email"]}</td>
+            <td>{$row["assocProp"]}</td><td>{$row["havepaid"]}</td><td>$ {$row["bal"]}</td>
+            </tr>";
+        }
+    }echo"</table>";
+}
+
+function adminShowAllResiNameDesc($conn) {
+    $sql = "SELECT * FROM residents ORDER BY name DESC;";
+    $result = mysqli_query($conn, $sql);
+    $resultCheck = mysqli_num_rows($result);
+    echo" <table border= '1'>";
+    echo"<tr><td></td><td>Id</td><td>Account Number</td><td>Name</td><td>E-mail</td><td>Associated Property</td>
+    <td>Paid this month?</td><td width='150'>Balance</td>";
+    if ($resultCheck > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo"<tr><td><a href='updateresi.php?id={$row["id"]}' method='post'><button type='submit' name='update'>Update</button></a></td>
+            <td>{$row["id"]}</td><td>{$row["accNum"]}</td><td>{$row["name"]}</td><td>{$row["email"]}</td>
+            <td>{$row["assocProp"]}</td><td>{$row["havepaid"]}</td><td>$ {$row["bal"]}</td>
+            </tr>";
+        }
+    }echo"</table>";
+}
+
+function adminShowAllResiBalAsc($conn) {
+    $sql = "SELECT * FROM residents ORDER BY bal DESC;";
     $result = mysqli_query($conn, $sql);
     $resultCheck = mysqli_num_rows($result);
     echo" <table border= '1'>";
@@ -311,7 +361,7 @@ function updateResiDB($conn, $id, $havepaid, $balance) {
         exit();
     }
     
-    mysqli_stmt_bind_param($stmt, "ssi" , $havepaid, $balance, $id);
+    mysqli_stmt_bind_param($stmt, "sii" , $havepaid, $balance, $id);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
     header("location: ../manageresi.php?error=none");
@@ -418,17 +468,17 @@ $SSN, $dob, $haveEviction, $eviction, $haveFelony, $felony, $comments) {
         header("location: ../application.php?error=stmtfailed");
         exit();
     }
-
-    // $hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
     
+    $hashedSSN = password_hash($SSN, PASSWORD_DEFAULT);
+
     mysqli_stmt_bind_param($stmt, "ssssssssssssssssssssssssssssss" , $appAddress, $lengthOfOcc, $moveindate, $name, $email, $phone, $lastadd, 
     $city, $state, $zipCode, $monthRent, $lastaddlen, $employmentstat, $company, $grossinc,  
     $pets, $petsdescrip, $onlyoccupant, $occupant2name, $occupant2relation, $occupant3name, $occupant3relation, $haveSSN, 
-    $SSN, $dob, $haveEviction, $eviction, $haveFelony, $felony, $comments);
+    $hashedSSN, $dob, $haveEviction, $eviction, $haveFelony, $felony, $comments);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
-    header("location: ../application.php?error=none");
-    exit();
+    // header("location: ../application.php?error=none");
+    // exit();
 
     
     

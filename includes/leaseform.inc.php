@@ -116,8 +116,8 @@ function PutLink($URL, $txt)
 }
 if ((isset($_POST["submit"])) || (isset($_POST["download"])) || (isset($_POST["signaturesubmit"]))) {
 
-    $owner = 'Robert Soto';
-    $ownerAdd = ''; //$_POST["ownerAdd"];
+    $owner = $_POST["owner"];
+    $ownerAdd = $_POST["ownerAdd"];
     $tenant = $_POST["tenant"];
     $address = $_POST["address"];
     $depoAmount = $_POST["depoAmount"];
@@ -149,7 +149,7 @@ if ((isset($_POST["submit"])) || (isset($_POST["download"])) || (isset($_POST["s
     $fileName = str_replace(' ', '', $fileName);
 
 } else  {
-    $owner = 'Robert Soto';
+    $owner = '            ';
     $ownerAdd = '                                                                             ';
     $tenant = '                     ';
     $address = '                                                                                ';
@@ -385,7 +385,7 @@ $pdf->Ln(30);
 $pdf->Cell(15);
 
 if (isset($_POST["signaturesubmit"])) {
-    $pdf->Image($dir . $signatureFileName , 30 , 105, 50);
+    $pdf->Image($dir . $signatureFileName , 30 , 95, 50);
 } 
 
 $pdf->Cell(60, 6, '', 'B', 0, 'C'); //Tenant Signature
